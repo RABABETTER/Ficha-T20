@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador de Ficha Tormenta20</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="antialiased">
+
+    <div id="app" class="min-h-screen">
+        <header class="glass-effect">
+            <div class="max-w-7xl mx-auto py-3 px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+                <h1 class="text-2xl font-bold text-red-500 tracking-wider">
+                    <span class="text-white">FICHA</span>T20
+                </h1>
+                <nav class="flex flex-wrap justify-center gap-1">
+                    <button id="tab-criacao" class="tab-button active">Criação</button>
+                    <button id="tab-ficha" class="tab-button">Ficha</button>
+                    <button id="tab-modificadores" class="tab-button">Modificadores</button>
+                    <button id="tab-admin" class="tab-button">Painel Admin</button>
+                </nav>
+            </div>
+        </header>
+
+        <main class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+            <div id="loading" class="text-center py-10">
+                <p class="text-lg">Carregando dados do Firebase...</p>
+                <svg class="animate-spin h-8 w-8 text-red-500 mx-auto mt-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+            </div>
+            
+            <div id="app-content" class="hidden">
+                <div id="view-criacao" class="space-y-6">
+                    <div class="glass-effect p-6">
+                        <h2 class="text-xl font-semibold mb-4 text-red-400 border-b border-gray-700 pb-2">Identidade do Herói</h2>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="char-name" class="block text-sm font-medium text-gray-300">Nome do Personagem</label>
+                                <input type="text" id="char-name" class="form-input mt-1 block w-full">
+                            </div>
+                            <div>
+                                <label for="player-name" class="block text-sm font-medium text-gray-300">Nome do Jogador</label>
+                                <input type="text" id="player-name" class="form-input mt-1 block w-full">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-effect p-6">
+                        <h2 class="text-xl font-semibold mb-4 text-red-400 border-b border-gray-700 pb-2">Origens e Escolhas</h2>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                            <div>
+                                <label for="select-race" class="block text-sm font-medium text-gray-300">Raça</label>
+                                <select id="select-race" class="form-select mt-1 block w-full"></select>
+                            </div>
+                            <div>
+                                <label for="select-class-lvl1" class="block text-sm font-medium text-gray-300">Classe</label>
+                                <select id="select-class-lvl1" class="form-select mt-1 block w-full"></select>
+                            </div>
+                            <div>
+                                <label for="select-origin" class="block text-sm font-medium text-gray-300">Origem</label>
+                                <select id="select-origin" class="form-select mt-1 block w-full"></select>
+                            </div>
+                            <div>
+                                <label for="select-divinity" class="block text-sm font-medium text-gray-300">Divindade</label>
+                                <select id="select-divinity" class="form-select mt-1 block w-full"></select>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="creation-choices" class="space-y-6">
+                        <div id="race-choice-section" class="glass-effect p-6 hidden"><h3 class="text-lg font-semibold text-red-400 mb-4 border-b border-gray-700 pb-2">Escolhas da Raça</h3><div id="race-choice-container" class="space-y-4"></div></div>
+                        <div id="class-choice-section" class="glass-effect p-6 hidden"><h3 class="text-lg font-semibold text-red-400 mb-4 border-b border-gray-700 pb-2">Escolhas da Classe</h3><div id="class-choice-container" class="space-y-4"></div></div>
+                        <div id="origin-choice-section" class="glass-effect p-6 hidden"><h3 class="text-lg font-semibold text-red-400 mb-4 border-b border-gray-700 pb-2">Escolhas da Origem</h3><p class="text-sm text-gray-400 mb-4">Sua origem permite que você escolha dois benefícios entre as perícias e poderes a seguir.</p><div id="origin-choice-container" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div></div>
+                        <div id="divinity-choice-section" class="glass-effect p-6 hidden"><h3 class="text-lg font-semibold text-red-400 mb-4 border-b border-gray-700 pb-2">Escolhas da Divindade</h3><div id="divinity-choice-container" class="space-y-4"></div></div>
+                    </div>
+
+                    <div class="glass-effect p-6">
+                        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 gap-4">
+                            <h2 class="text-xl font-semibold text-red-400">Calculadora de Atributos</h2>
+                            <div class="flex items-center gap-2 text-sm glass-effect p-2">
+                                <label for="point-buy-total">Pontos:</label>
+                                <input type="number" id="point-buy-total" value="10" class="form-input w-16 text-center">
+                                <span>Restantes: <span id="point-buy-remaining" class="font-bold text-lg">10</span></span>
+                            </div>
+                        </div>
+                        <div id="point-buy-calculator" class="space-y-3"></div>
+                    </div>
+                </div>
+
+                <div id="view-ficha" class="space-y-6 hidden">
+                    <div class="glass-effect p-6">
+                        <h2 class="text-xl font-semibold mb-4 text-red-400 border-b border-gray-700 pb-2">Resumo do Herói</h2>
+                         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                             <div id="summary-display" class="col-span-2 grid grid-cols-2 gap-4 text-sm"></div>
+                             <div>
+                                 <label for="char-level" class="block text-sm font-medium text-gray-300">Nível do Personagem</label>
+                                 <input type="number" id="char-level" value="1" min="1" max="20" class="form-input mt-1 block w-full">
+                             </div>
+                          </div>
+                        <div id="class-summary-display" class="mt-4 text-center text-gray-300 font-semibold text-lg tracking-wider"></div>
+                    </div>
+
+                    <div id="divinity-details-section" class="glass-effect p-6 hidden"><h3 class="text-lg font-semibold text-red-400 mb-4 border-b border-gray-700 pb-2">Detalhes da Divindade</h3><div id="divinity-details-container" class="space-y-2 text-sm"></div></div>
+
+                    <div class="glass-effect p-6"><h3 class="text-lg font-semibold text-red-400 mb-4">Atributos</h3><div id="attributes-display"></div></div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        <div class="glass-effect p-6 space-y-4"> <div id="resources-display" class="space-y-4"></div></div>
+                        <div class="glass-effect p-6"> <div id="defense-display"></div></div>
+                        <div class="glass-effect p-6"> <div id="spell-cd-display"></div></div>
+                        <div class="glass-effect p-6"><h3 class="text-lg font-semibold text-red-400 mb-4">Itens</h3><div id="items-display" class="space-y-2 text-sm max-h-80 overflow-y-auto custom-scrollbar pr-2"></div></div>
+                        <div class="glass-effect p-6 col-span-1 lg:col-span-2"><h3 class="text-lg font-semibold text-red-400 mb-4">Magias Conhecidas</h3><div id="learned-spells-display" class="space-y-3 max-h-80 overflow-y-auto custom-scrollbar pr-2"></div></div>
+                    </div>
+
+                    <div class="glass-effect p-6">
+                        <div class="flex justify-between items-center mb-4"><h2 class="text-xl font-semibold text-red-400">Perícias</h2><div id="skills-counter" class="text-sm font-semibold"></div></div>
+                        <div id="skills-header" class="grid grid-cols-12 gap-2 items-center text-xs font-bold text-gray-400 border-b-2 border-gray-700 pb-2 mb-2">
+                            <span class="col-span-1 text-center">Treinar</span><span class="col-span-3">Perícia</span><span class="col-span-1 text-center">Total</span><span class="col-span-2 text-center">Atributo</span><span class="col-span-1 text-center">Bônus Atrib.</span><span class="col-span-2 text-center">Bônus Treino</span><span class="col-span-2 text-center">Outros</span>
+                        </div>
+                        <div id="skills-list" class="space-y-3"></div>
+                    </div>
+                    
+                    <div class="glass-effect p-6"><h3 class="text-lg font-semibold text-red-400 mb-4">Habilidades e Poderes Adquiridos</h3><div id="abilities-display" class="space-y-2 text-sm max-h-80 overflow-y-auto custom-scrollbar pr-2"></div></div>
+                </div>
+
+                <div id="view-modificadores" class="hidden">
+                    <div class="glass-effect p-6">
+                        <div class="flex justify-between items-center mb-4 border-b border-gray-700 pb-2">
+                            <h2 class="text-xl font-semibold text-red-400">Modificadores Globais</h2>
+                            <div class="flex items-center space-x-2 text-sm">
+                                <span class="text-gray-400">Nomes de Jogo</span>
+                                <label for="modifier-name-toggle" class="relative inline-flex items-center cursor-pointer"><input type="checkbox" id="modifier-name-toggle" class="sr-only peer"><div class="w-11 h-6 bg-gray-600 rounded-full peer peer-focus:ring-2 peer-focus:ring-red-500 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-red-600"></div></label>
+                                <span class="text-gray-400">Chaves de Efeito</span>
+                            </div>
+                        </div>
+                        <p class="text-sm text-gray-400 mb-6">Estes valores são a soma de todos os bônus acumulados. Clique em ⓘ para ver as fontes de cada bônus.</p>
+                        <div class="mb-6"><input type="text" id="modifier-search-input" placeholder="Pesquisar por nome ou chave..." class="form-input w-full"></div>
+                        <div id="global-modifiers-display" class="space-y-4"></div>
+                    </div>
+                </div>
+
+                <div id="view-admin" class="hidden space-y-6">
+                         <details class="glass-effect mb-6">
+                             <summary class="p-6 text-xl font-semibold text-red-400">Materiais Permitidos</summary>
+                             <div id="allowed-sources-filter" class="grid grid-cols-2 md:grid-cols-4 gap-4 px-6 pb-6"></div>
+                          </details>
+                        
+                    <h2 class="text-2xl font-bold text-gray-300 my-6 border-b border-gray-700 pb-2">Conteúdo de Jogo</h2>
+                    <div class="mb-6"><input type="text" id="admin-search-input" placeholder="Pesquisar em todo o conteúdo..." class="form-input w-full"></div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="glass-effect p-6"><div class="flex justify-between items-center mb-4"><h2 class="text-xl font-semibold text-red-400">Raças</h2><button id="add-race-btn" class="btn-primary px-4 py-2 rounded-md text-sm">Adicionar</button></div><div id="races-list" class="space-y-3 max-h-96 overflow-y-auto custom-scrollbar pr-2"></div></div>
+                        <div class="glass-effect p-6"><div class="flex justify-between items-center mb-4"><h2 class="text-xl font-semibold text-red-400">Classes</h2><button id="add-class-btn" class="btn-primary px-4 py-2 rounded-md text-sm">Adicionar</button></div><div id="classes-list" class="space-y-3 max-h-96 overflow-y-auto custom-scrollbar pr-2"></div></div>
+                        <div class="glass-effect p-6"><div class="flex justify-between items-center mb-4"><h2 class="text-xl font-semibold text-red-400">Origens</h2><button id="add-origin-btn" class="btn-primary px-4 py-2 rounded-md text-sm">Adicionar</button></div><div id="origins-list" class="space-y-3 max-h-96 overflow-y-auto custom-scrollbar pr-2"></div></div>
+                        <div class="glass-effect p-6"><div class="flex justify-between items-center mb-4"><h2 class="text-xl font-semibold text-red-400">Divindades</h2><button id="add-divinity-btn" class="btn-primary px-4 py-2 rounded-md text-sm">Adicionar</button></div><div id="divinities-list" class="space-y-3 max-h-96 overflow-y-auto custom-scrollbar pr-2"></div></div>
+                        <div class="glass-effect p-6 col-span-1 md:col-span-2"><div class="flex justify-between items-center mb-4"><h2 class="text-xl font-semibold text-red-400">Poderes e Habilidades</h2><button id="add-power-btn" class="btn-primary px-4 py-2 rounded-md text-sm">Adicionar</button></div><div id="powers-list" class="space-y-3 max-h-96 overflow-y-auto custom-scrollbar pr-2"></div></div>
+                    </div>
+
+                    <h2 class="text-2xl font-bold text-gray-300 my-6 border-b border-gray-700 pb-2">Equipamentos</h2>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="glass-effect p-6"><div class="flex justify-between items-center mb-4"><h2 class="text-xl font-semibold text-red-400">Itens Gerais</h2><button id="add-item-btn" class="btn-primary px-4 py-2 rounded-md text-sm">Adicionar</button></div><div id="items-list" class="space-y-3 max-h-96 overflow-y-auto custom-scrollbar pr-2"></div></div>
+                            <div class="glass-effect p-6"><div class="flex justify-between items-center mb-4"><h2 class="text-xl font-semibold text-red-400">Armas</h2><button id="add-weapon-btn" class="btn-primary px-4 py-2 rounded-md text-sm">Adicionar</button></div><div id="weapons-list" class="space-y-3 max-h-96 overflow-y-auto custom-scrollbar pr-2"></div></div>
+                            <div class="glass-effect p-6"><div class="flex justify-between items-center mb-4"><h2 class="text-xl font-semibold text-red-400">Armaduras e Escudos</h2><button id="add-armor-btn" class="btn-primary px-4 py-2 rounded-md text-sm">Adicionar</button></div><div id="armors-list" class="space-y-3 max-h-96 overflow-y-auto custom-scrollbar pr-2"></div></div>
+                    </div>
+
+                    <h2 class="text-2xl font-bold text-gray-300 my-6 border-b border-gray-700 pb-2">Magias</h2>
+                    <div class="glass-effect p-6">
+                        <div class="flex justify-between items-center mb-4"><h2 class="text-xl font-semibold text-red-400">Todas as Magias</h2><button id="add-spell-btn" class="btn-primary px-4 py-2 rounded-md text-sm">Adicionar Magia</button></div>
+                        <div class="space-y-4">
+                            <details class="glass-effect" open><summary class="text-lg font-semibold text-red-400">1º Círculo</summary><div id="spells-circle-1-list" class="px-4 pb-4 space-y-3"></div></details>
+                            <details class="glass-effect"><summary class="text-lg font-semibold text-red-400">2º Círculo</summary><div id="spells-circle-2-list" class="px-4 pb-4 space-y-3"></div></details>
+                            <details class="glass-effect"><summary class="text-lg font-semibold text-red-400">3º Círculo</summary><div id="spells-circle-3-list" class="px-4 pb-4 space-y-3"></div></details>
+                            <details class="glass-effect"><summary class="text-lg font-semibold text-red-400">4º Círculo</summary><div id="spells-circle-4-list" class="px-4 pb-4 space-y-3"></div></details>
+                            <details class="glass-effect"><summary class="text-lg font-semibold text-red-400">5º Círculo</summary><div id="spells-circle-5-list" class="px-4 pb-4 space-y-3"></div></details>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div id="generic-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 hidden">
+        <div class="glass-effect w-full max-w-lg max-h-[90vh] flex flex-col">
+            <div class="p-6 border-b border-gray-700">
+                <div class="flex justify-between items-center">
+                    <h3 id="modal-title" class="text-xl font-semibold text-red-400"></h3>
+                    <button id="modal-close-btn" class="text-gray-400 hover:text-white text-3xl font-light">&times;</button>
+                </div>
+            </div>
+            <div id="modal-body" class="p-6 space-y-4 overflow-y-auto custom-scrollbar"></div>
+            <div class="p-6 mt-auto border-t border-gray-700 flex justify-end space-x-3">
+                <button id="modal-cancel-btn" class="btn-secondary px-4 py-2 rounded-md text-sm">Cancelar</button>
+                <button id="modal-save-btn" class="btn-primary px-4 py-2 rounded-md text-sm">Salvar</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="script.js"></script>
+</body>
+</html>

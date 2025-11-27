@@ -1,0 +1,159 @@
+/* --- Configuração Base e Fundo --- */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #111827; /* Fundo escuro fallback */
+    color: #e0e0e0;
+    overflow-y: scroll; /* Garante que a scrollbar esteja sempre presente */
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    z-index: -1;
+    background-image: url('https://source.unsplash.com/random/1920x1080/?fantasy,dungeon,rpg,dark');
+    background-size: cover;
+    background-position: center;
+    filter: brightness(0.4);
+}
+
+/* --- Estilo Liquid Glass (Glassmorphism) --- */
+.glass-effect {
+    background: rgba(17, 24, 39, 0.6); /* Fundo semi-transparente escuro */
+    backdrop-filter: blur(12px) saturate(150%);
+    -webkit-backdrop-filter: blur(12px) saturate(150%);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+/* --- Header Flutuante --- */
+header {
+    position: sticky;
+    top: 1rem;
+    z-index: 50;
+    margin: 0 1rem;
+    border-radius: 12px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* --- Abas de Navegação --- */
+.tab-button {
+    transition: all 0.3s ease;
+    border-bottom: 2px solid transparent;
+    color: #9ca3af; /* Cinza claro */
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+}
+.tab-button:hover:not(.active) {
+    background-color: rgba(255, 255, 255, 0.05);
+    color: #f3f4f6;
+}
+.tab-button.active {
+    color: #ffffff;
+    font-weight: 600;
+    background-color: rgba(239, 68, 68, 0.3);
+    text-shadow: 0 0 5px rgba(239, 68, 68, 0.7);
+}
+
+/* --- Formulários --- */
+.form-input, .form-select, .form-textarea {
+    background-color: rgba(31, 41, 55, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #e0e0e0;
+    border-radius: 0.375rem;
+    transition: all 0.2s;
+}
+.form-input::placeholder, .form-textarea::placeholder {
+    color: #6b7280;
+}
+.form-input:focus, .form-select:focus, .form-textarea:focus {
+    outline: none;
+    border-color: #ef4444;
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.4);
+}
+.form-select {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%239ca3af' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+    background-position: right 0.5rem center;
+    background-repeat: no-repeat;
+    background-size: 1.5em 1.5em;
+    padding-right: 2.5rem;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+/* --- Botões --- */
+.btn-primary {
+    background: linear-gradient(145deg, #f87171, #dc2626);
+    border: none;
+    color: white;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 10px rgba(239, 68, 68, 0.3);
+    transform: translateY(0);
+}
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(239, 68, 68, 0.5);
+}
+.btn-primary:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 5px rgba(239, 68, 68, 0.3);
+}
+.btn-secondary {
+    background: rgba(75, 85, 99, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.2s ease;
+}
+.btn-secondary:hover {
+    background: rgba(107, 114, 128, 0.7);
+}
+
+/* --- Detalhes/Summary (Acordeão) --- */
+details summary {
+    list-style: none;
+    cursor: pointer;
+    position: relative;
+}
+details.glass-effect > summary {
+    padding: 1rem;
+}
+details summary::-webkit-details-marker {
+    display: none;
+}
+details summary::after {
+    content: '›';
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%) rotate(90deg);
+    font-size: 1.5em;
+    color: #9ca3af;
+    transition: transform 0.2s ease-in-out;
+}
+details[open] > summary::after {
+    transform: translateY(-50%) rotate(-90deg);
+}
+
+/* --- Scrollbar Customizada --- */
+.custom-scrollbar::-webkit-scrollbar { width: 8px; }
+.custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+.custom-scrollbar::-webkit-scrollbar-thumb { background: #4b5563; border-radius: 4px; }
+.custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #6b7280; }
+
+/* --- Animações e Transições --- */
+.details-section {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out, padding 0.3s ease-out, margin 0.3s ease-out;
+    padding-top: 0; padding-bottom: 0; margin-top: 0;
+}
+.details-section.open {
+    max-height: 500px;
+    transition: max-height 0.5s ease-in, padding 0.5s ease-in, margin 0.5s ease-in;
+    margin-top: 0.5rem;
+}
