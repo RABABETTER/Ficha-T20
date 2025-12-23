@@ -40,7 +40,7 @@ const state = {
     userId: USE_OFFLINE_MODE ? 'offline-user' : null,
     allowedSources: ["Todos"],
     showTechnicalModifierNames: false,
-    currentCharacter: { race: null, class: null, origin: null, divinity: null, level: 1, baseAttributes: { FOR:0, DES:0, CON:0, INT:0, SAB:0, CAR:0 }, pointBuyTotal: 10, chosenAttributes: {}, chosenClassSkills: {}, chosenClassFixedSkills: {}, chosenOriginBenefits: {}, chosenDivinityPowers: {}, classChoices: {}, trainedSkills: [], learnedSpells: [], currentHP: 0, currentPM: 0, spellAttribute: 'INT', skillAttributes: {}, defenseAttribute: 'DES', equippedArmor: null, equippedShield: null, generalChoices: {} }
+    currentCharacter: { race: null, class: null, origin: null, divinity: null, level: 1, baseAttributes: { FOR:0, DES:0, CON:0, INT:0, SAB:0, CAR:0 }, pointBuyTotal: 10, chosenAttributes: {}, chosenClassSkills: {}, chosenClassFixedSkills: {}, chosenOriginBenefits: {}, chosenDivinityPowers: {}, classChoices: {}, trainedSkills: [], learnedSpells: [], currentHP: 0, currentPM: 0, spellAttribute: 'INT', skillAttributes: {}, defenseAttribute: 'DES', equippedArmor: null, equippedShield: null, generalChoices: {}, activeConditions: [] }
 };
 
 const collections = {
@@ -203,6 +203,7 @@ function orchestrateSheetUpdate(options = {}) {
     if (shouldUpdate('defense')) renderDefenseSection(stats);
     if (shouldUpdate('magic')) renderMagicSection(stats);
     if (shouldUpdate('learnedSpells')) renderLearnedSpells();
+    if (shouldUpdate('conditions')) renderConditionsSection(stats);
     if (shouldUpdate('skills')) renderSkillsSection(stats);
     if (shouldUpdate('abilities')) renderAbilitiesAndItemsSection(stats);
     if (shouldUpdate('modifiers')) renderGlobalModifiersSection(stats);
@@ -217,6 +218,38 @@ function calculateCharacterStats() {
     const attributeSources = ALL_ATTRIBUTES.reduce((acc, key) => ({ ...acc, [key]: [{source: 'Base', value: finalAttributes[key]}]}), {});
     const globalModifiers = FIXED_MODIFIERS.reduce((acc, mod) => ({ ...acc, [mod.key]: 0 }), {});
     const modifierSources = FIXED_MODIFIERS.reduce((acc, mod) => ({ ...acc, [mod.key]: [] }), {});
+    // Apply Conditions
+    if (char.activeConditions) {
+        char.activeConditions.forEach(condId => {
+            const cond = CONDITIONS.find(c => c.id === condId);
+            if (cond && cond.effects) {
+                Object.entries(cond.effects).forEach(([effKey, val]) => {
+                    if (effKey === 'bonus_pericia_all') {
+                        Object.keys(SKILL_DEFAULT_ATTR).forEach(skill => {
+                            const key = `bonus_pericia_${skill}`;
+                            if(globalModifiers[key] !== undefined) {
+                                globalModifiers[key] += val;
+                                modifierSources[key].push(`Condição (${cond.name}): ${val}`);
+                            }
+                        });
+                    } else if (effKey === 'bonus_pericia_all_no_attack') {
+                        Object.keys(SKILL_DEFAULT_ATTR).forEach(skill => {
+                            if (skill !== 'Luta' && skill !== 'Pontaria') {
+                                const key = `bonus_pericia_${skill}`;
+                                if(globalModifiers[key] !== undefined) {
+                                    globalModifiers[key] += val;
+                                    modifierSources[key].push(`Condição (${cond.name}): ${val}`);
+                                }
+                            }
+                        });
+                    } else if (globalModifiers[effKey] !== undefined) {
+                        globalModifiers[effKey] += val;
+                        modifierSources[effKey].push(`Condição (${cond.name}): ${val}`);
+                    }
+                });
+            }
+        });
+    }
 
     if (race) {
         if (race.bonuses) {
@@ -1575,3 +1608,74 @@ function getSpellFormHtml() {
 }
 
 window.populateEquipmentSelects = populateEquipmentSelects;
+
+
+const CONDITIONS = [
+    { id: 'abalado', name: 'Abalado', description: '-2 em testes de perícia.', effects: { bonus_pericia_all: -2 } },
+    { id: 'abracado', name: 'Abraçado', description: '-2 na Defesa.', effects: { bonus_armadura: -2 } }, // Simplification
+    { id: 'agarrado', name: 'Agarrado', description: '-2 em ataques, -2 na Defesa, Deslocamento 0.', effects: { bonus_ataque_corpoacorpo: -2, bonus_ataque_adistancia: -2, bonus_armadura: -2, deslocamento: -999 } },
+    { id: 'alquebrado', name: 'Alquebrado', description: 'Custo de PM +1.', effects: { custo_pm: 1 } }, // Need to implement PM cost logic? Or just display.
+    { id: 'atordoado', name: 'Atordoado', description: 'Incapaz de agir. -5 na Defesa.', effects: { bonus_armadura: -5 } },
+    { id: 'caido', name: 'Caído', description: '-5 em ataques corpo a corpo, -5 na Defesa contra corpo a corpo (+5 contra distancia).', effects: { bonus_ataque_corpoacorpo: -5, bonus_armadura: -5 } }, // Simplified
+    { id: 'cego', name: 'Cego', description: 'Desprevenido (-5 Defesa), -5 em perícias de Força/Destreza.', effects: { bonus_armadura: -5, bonus_pericia_FOR: -5, bonus_pericia_DES: -5 } }, // Custom logic needed for "Attribute Skills"
+    { id: 'confuso', name: 'Confuso', description: 'Comportamento aleatório.', effects: {} },
+    { id: 'debilitado', name: 'Debilitado', description: '-2 em testes de atributo e perícia (exceto ataque).', effects: { bonus_pericia_all_no_attack: -2, bonus_atributo_all: -2 } },
+    { id: 'desprevenido', name: 'Desprevenido', description: '-5 na Defesa e Reflexos.', effects: { bonus_armadura: -5, bonus_pericia_Reflexos: -5 } },
+    { id: 'doente', name: 'Doente', description: 'Varia.', effects: {} },
+    { id: 'enjoado', name: 'Enjoado', description: 'Apenas uma ação padrão ou movimento.', effects: {} },
+    { id: 'envenenado', name: 'Envenenado', description: 'Varia.', effects: {} },
+    { id: 'exausto', name: 'Exausto', description: '-2 em testes, metade do deslocamento.', effects: { bonus_pericia_all: -2, deslocamento_multiplier: 0.5 } },
+    { id: 'fascinado', name: 'Fascinado', description: '-5 em Percepção.', effects: { bonus_pericia_Percepção: -5 } },
+    { id: 'fraco', name: 'Fraco', description: '-2 em testes de atributo e perícia físicos.', effects: { bonus_pericia_FOR: -2, bonus_pericia_DES: -2, bonus_pericia_CON: -2 } },
+    { id: 'frustrado', name: 'Frustrado', description: '-2 em testes de atributo e perícia mentais.', effects: { bonus_pericia_INT: -2, bonus_pericia_SAB: -2, bonus_pericia_CAR: -2 } },
+    { id: 'imovel', name: 'Imóvel', description: 'Deslocamento 0. -5 Defesa.', effects: { deslocamento: -999, bonus_armadura: -5 } },
+    { id: 'inconsciente', name: 'Inconsciente', description: 'Indefeso.', effects: { bonus_armadura: -10 } }, // Rough approx
+    { id: 'indefeso', name: 'Indefeso', description: '-10 na Defesa (cai a 0 se <10?).', effects: { bonus_armadura: -10 } },
+    { id: 'lento', name: 'Lento', description: 'Metade do deslocamento, -2 Reflexos.', effects: { deslocamento_multiplier: 0.5, bonus_pericia_Reflexos: -2 } },
+    { id: 'ofuscado', name: 'Ofuscado', description: '-2 em ataques e Percepção.', effects: { bonus_ataque_corpoacorpo: -2, bonus_ataque_adistancia: -2, bonus_pericia_Percepção: -2 } },
+    { id: 'paralisado', name: 'Paralisado', description: 'Imóvel e Indefeso.', effects: { deslocamento: -999, bonus_armadura: -10 } },
+    { id: 'pasmo', name: 'Pasmo', description: 'Não pode agir.', effects: {} },
+    { id: 'petrificado', name: 'Petrificado', description: 'Inconsciente + RD 10/8.', effects: { bonus_armadura: -10, rd_total: 8 } },
+    { id: 'sangrando', name: 'Sangrando', description: 'Perde PV no início do turno.', effects: {} },
+    { id: 'surdo', name: 'Surdo', description: '-5 em Iniciativa, Percepção. Testes de Vontade para magias.', effects: { bonus_pericia_Iniciativa: -5, bonus_pericia_Percepção: -5 } },
+    { id: 'surpreendido', name: 'Surpreendido', description: 'Desprevenido (-5 Defesa).', effects: { bonus_armadura: -5 } },
+    { id: 'vulneravel', name: 'Vulnerável', description: '-2 na Defesa.', effects: { bonus_armadura: -2 } }
+];
+
+function renderConditionsSection(stats) {
+    const { char } = stats;
+    const active = char.activeConditions || [];
+
+    // Create UI container if missing (append to Ficha view)
+    let container = document.getElementById('conditions-section');
+    if (!container) {
+        const parent = document.getElementById('view-ficha');
+        const div = document.createElement('div');
+        div.id = 'conditions-section';
+        div.className = 'glass-effect p-6 mt-6';
+        div.innerHTML = `<h3 class="text-lg font-semibold text-red-400 mb-4">Condições & Efeitos</h3><div id="conditions-list" class="flex flex-wrap gap-2"></div>`;
+        // Insert before skills or somewhere appropriate. Let's append for now or insert before skills.
+        // The skills section is deep inside. Let's just append to view-ficha.
+        parent.insertBefore(div, parent.querySelector('#skills-header')?.closest('.glass-effect') || null);
+        container = div;
+    }
+
+    const list = document.getElementById('conditions-list');
+    list.innerHTML = CONDITIONS.map(cond => {
+        const isActive = active.includes(cond.id);
+        return `
+            <button onclick="toggleCondition('${cond.id}')"
+                class="px-3 py-1 rounded border text-sm transition-colors ${isActive ? 'bg-red-900 border-red-500 text-white' : 'bg-gray-800 border-gray-600 text-gray-400 hover:bg-gray-700'}"
+                title="${cond.description}">
+                ${cond.name}
+            </button>
+        `;
+    }).join('');
+
+    window.toggleCondition = (id) => {
+        const idx = state.currentCharacter.activeConditions.indexOf(id);
+        if (idx >= 0) state.currentCharacter.activeConditions.splice(idx, 1);
+        else state.currentCharacter.activeConditions.push(id);
+        orchestrateSheetUpdate();
+    };
+}
