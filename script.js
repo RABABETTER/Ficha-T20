@@ -1121,7 +1121,7 @@ function renderDefenseSection(stats) {
         // Actually populateEquipmentSelects is global and targets the IDs.
         // We just re-created the IDs. So we need to call populate and then set values.
 
-        window.populateEquipmentSelects();
+        populateEquipmentSelects();
         document.getElementById('select-armor').value = char.equippedArmor || "";
         document.getElementById('select-shield').value = char.equippedShield || "";
     }
