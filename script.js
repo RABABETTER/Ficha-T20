@@ -6,11 +6,11 @@ const USE_OFFLINE_MODE = true;
 const DEFAULT_RACES = [ { "id": "r1", "name": "Anão", "source": "T20 - Livro Básico - Jogo do Ano", "bonuses": "CON: 2, SAB: 1, DES: -1", "attributeChoices": 0, "attributeBonus": 0, "attributeRestrictions": "", "tipoCriatura": "Humanoide", "tamanho": "Médio", "ataquesNaturais": "", "abilities": "Conhecimento das Rochas, Devagar e Sempre, Duro como Pedra, Tradição de Heredrimm" } ];
 const DEFAULT_ORIGINS = [ { "id": "o1", "name": "Acólito", "items": "Símbolo sagrado, Traje de sacerdote", "power": "Membro da Igreja", "source": "T20 - Livro Básico - Jogo do Ano", "numBeneficios": 2, "benefits_skills": "Vontade, Religião", "benefits_powers": "Curandeiro, Medicina" } ];
 const DEFAULT_DIVINITIES = [ { "id": "d1", "name": "Aharadak", "canalizarEnergia": "Negativa", "armaPreferida": "Corrente de espinhos", "powers": "Afinidade com a Tormenta, Êxtase da Loucura, Percepção Temporal, Rejeição Divina, Corromper Equipamento, Espalhar a Corrupção, Júbilo na Dor, Mediador da Tempestade", "obrigaçõesRestricoes": "No início de qualquer cena de ação, role 1d6. Com um resultado ímpar, você fica fascinado na primeira rodada, perdido em devaneios sobre a futilidade da vida (mesmo que seja imune a esta condição).", "source": "T20 - Livro Básico - Jogo do Ano" } ];
-const DEFAULT_CLASSES = [ 
-    { "id": "c1", "name": "Arcanista", "pvInicial": 8, "pvPerLevel": 2, "pmPerLevel": 6, "periciasDeClasse": "Misticismo, Vontade", "numPericiasAdicionais": 2, "periciasAdicionais": "Conhecimento, Diplomacia, Enganação, Guerra, Iniciativa, Intimidação, Intuição, Investigação, Nobreza, Ofício, Percepção", "levelAbilities": "1: Caminho do Arcanista, 1: Magias (1º Círculo), 2: Poder de Arcanista, 3: Poder de Arcanista, 4: Poder de Arcanista, 5: Magias (2º Círculo), 5: Poder de Arcanista, 6: Poder de Arcanista, 7: Poder de Arcanista, 8: Poder de Arcanista, 9: Magias (3º Círculo), 9: Poder de Arcanista, 10: Poder de Arcanista, 11: Poder de Arcanista, 12: Poder de Arcanista, 13: Magias (4º Círculo), 13: Poder de Arcanista, 14: Poder de Arcanista, 15: Poder de Arcanista, 16: Poder de Arcanista, 17: Magias (5º Círculo), 17: Poder de Arcanista, 18: Poder de Arcanista, 19: Poder de Arcanista, 20: Alta Arcana, 20: Poder de Arcanista", "effects": "num_poderes_concedidos: 1", "choices": JSON.stringify([ { "level": 1, "key": "caminho_arcanista", "label": "Caminho do Arcanista", "type": "select", "options": [ {"value": "bruxo", "label": "Bruxo", "description": "Você se aprofunda em magias que amaldiçoam e debilitam seus inimigos. Seu atributo-chave para magias é Carisma.", "effects": ""}, {"value": "feiticeiro", "label": "Feiticeiro", "description": "Seu poder mágico é inato. Você lança magias de forma intuitiva e poderosa. Seu atributo-chave para magias é Carisma.", "effects": ""}, {"value": "mago", "label": "Mago", "description": "Você é um estudioso da magia, aprendendo através de tomos e pergaminhos. Seu atributo-chave para magias é Inteligência.", "effects": ""} ] } ]), "source": "T20 - Livro Básico - Jogo do Ano" }, 
-    { "id": "c2", "name": "Bucaneiro", "pvInicial": 16, "pvPerLevel": 4, "pmPerLevel": 3, "periciasDeClasse": "Luta ou Pontaria, Reflexos", "numPericiasAdicionais": 4, "periciasAdicionais": "Acrobacia, Atletismo, Atuação, Enganação, Fortitude, Furtividade, Iniciativa, Intimidação, Jogatina, Luta, Ofício, Percepção, Pilotagem, Pontaria", "levelAbilities": "1: Audácia, 1: Insolência, 2: Evasão, 2: Poder de Bucaneiro, 3: Esquiva Sagaz, 3: Poder de Bucaneiro, 4: Poder de Bucaneiro, 5: Panache, 5: Poder de Bucaneiro, 6: Poder de Bucaneiro, 7: Esquiva Sagaz, 7: Poder de Bucaneiro, 8: Poder de Bucaneiro, 9: Poder de Bucaneiro, 10: Evasão Aprimorada, 10: Poder de Bucaneiro, 11: Esquiva Sagaz, 11: Poder de Bucaneiro, 12: Poder de Bucaneiro, 13: Poder de Bucaneiro, 14: Poder de Bucaneiro, 15: Esquiva Sagaz, 15: Poder de Bucaneiro, 16: Poder de Bucaneiro, 17: Poder de Bucaneiro, 18: Poder de Bucaneiro, 19: Esquiva Sagaz, 19: Poder de Bucaneiro, 20: Sorte de Nimb, 20: Poder de Bucaneiro", "source": "T20 - Livro Básico - Jogo do Ano" } 
-];
 const DEFAULT_POWERS = [ {"id": "p1", "name": "Acuidade com Arma", "type": "Combate", "prerequisites": "Des 1", "description": "Usa Destreza em vez de Força para ataques e danos com armas leves ou de arremesso."} ];
+const DEFAULT_CLASSES = [
+    { "id": "c1", "name": "Arcanista", "pvInicial": 8, "pvPerLevel": 2, "pmPerLevel": 6, "periciasDeClasse": "Misticismo, Vontade", "numPericiasAdicionais": 2, "periciasAdicionais": "Conhecimento, Diplomacia, Enganação, Guerra, Iniciativa, Intimidação, Intuição, Investigação, Nobreza, Ofício, Percepção", "levelAbilities": "1: Caminho do Arcanista, 1: Magias (1º Círculo), 2: Poder de Arcanista, 3: Poder de Arcanista, 4: Poder de Arcanista, 5: Magias (2º Círculo), 5: Poder de Arcanista, 6: Poder de Arcanista, 7: Poder de Arcanista, 8: Poder de Arcanista, 9: Magias (3º Círculo), 9: Poder de Arcanista, 10: Poder de Arcanista, 11: Poder de Arcanista, 12: Poder de Arcanista, 13: Magias (4º Círculo), 13: Poder de Arcanista, 14: Poder de Arcanista, 15: Poder de Arcanista, 16: Poder de Arcanista, 17: Magias (5º Círculo), 17: Poder de Arcanista, 18: Poder de Arcanista, 19: Poder de Arcanista, 20: Alta Arcana, 20: Poder de Arcanista", "effects": "num_poderes_concedidos: 1", "choices": JSON.stringify([ { "level": 1, "key": "caminho_arcanista", "label": "Caminho do Arcanista", "type": "select", "options": [ {"value": "bruxo", "label": "Bruxo", "description": "Você se aprofunda em magias que amaldiçoam e debilitam seus inimigos. Seu atributo-chave para magias é Carisma.", "effects": "attribute_magic: CAR"}, {"value": "feiticeiro", "label": "Feiticeiro", "description": "Seu poder mágico é inato. Você lança magias de forma intuitiva e poderosa. Seu atributo-chave para magias é Carisma.", "effects": "attribute_magic: CAR"}, {"value": "mago", "label": "Mago", "description": "Você é um estudioso da magia, aprendendo através de tomos e pergaminhos. Seu atributo-chave para magias é Inteligência.", "effects": "attribute_magic: INT"} ] } ]), "source": "T20 - Livro Básico - Jogo do Ano" },
+    { "id": "c2", "name": "Bucaneiro", "pvInicial": 16, "pvPerLevel": 4, "pmPerLevel": 3, "periciasDeClasse": "Luta ou Pontaria, Reflexos", "numPericiasAdicionais": 4, "periciasAdicionais": "Acrobacia, Atletismo, Atuação, Enganação, Fortitude, Furtividade, Iniciativa, Intimidação, Jogatina, Luta, Ofício, Percepção, Pilotagem, Pontaria", "levelAbilities": "1: Audácia, 1: Insolência, 2: Evasão, 2: Poder de Bucaneiro, 3: Esquiva Sagaz, 3: Poder de Bucaneiro, 4: Poder de Bucaneiro, 5: Panache, 5: Poder de Bucaneiro, 6: Poder de Bucaneiro, 7: Esquiva Sagaz, 7: Poder de Bucaneiro, 8: Poder de Bucaneiro, 9: Poder de Bucaneiro, 10: Evasão Aprimorada, 10: Poder de Bucaneiro, 11: Esquiva Sagaz, 11: Poder de Bucaneiro, 12: Poder de Bucaneiro, 13: Poder de Bucaneiro, 14: Poder de Bucaneiro, 15: Esquiva Sagaz, 15: Poder de Bucaneiro, 16: Poder de Bucaneiro, 17: Poder de Bucaneiro, 18: Poder de Bucaneiro, 19: Esquiva Sagaz, 19: Poder de Bucaneiro, 20: Sorte de Nimb, 20: Poder de Bucaneiro", "source": "T20 - Livro Básico - Jogo do Ano" }
+];
 const DEFAULT_ITEMS = [];
 const DEFAULT_WEAPONS = [];
 const DEFAULT_ARMORS = [];
@@ -342,6 +342,36 @@ function calculateCharacterStats() {
     });
 
     let totalHP = 0, totalPM = 0;
+    // Process General Choices (Class Paths, etc.)
+    if (char.generalChoices) {
+        Object.entries(char.generalChoices).forEach(([key, val]) => {
+            Object.keys(classLevels).forEach(classId => {
+                const cls = state.classes.find(c => c.id === classId);
+                if (cls && cls.choices) {
+                    try {
+                        const choicesDef = JSON.parse(cls.choices);
+                        choicesDef.forEach(cDef => {
+                            if (`class_${cDef.key}` === key || `class_${cDef.key}` === key.replace('class_', '')) {
+                                const option = cDef.options.find(o => o.value === val);
+                                if (option && option.effects) {
+                                    option.effects.split(',').forEach(eff => {
+                                        const [effKey, effVal] = eff.split(':').map(s => s.trim());
+                                        if (effKey === 'attribute_magic') {
+                                            char.spellAttribute = effVal;
+                                        } else if (globalModifiers[effKey] !== undefined) {
+                                            const v = parseInt(effVal);
+                                            globalModifiers[effKey] += v;
+                                            modifierSources[effKey].push(`${option.label}: ${v}`);
+                                        }
+                                    });
+                                }
+                            }
+                        });
+                    } catch (e) {}
+                }
+            });
+        });
+    }
     const level1Class = state.classes.find(c => c.id === classChoices[1]);
     if (level1Class) {
         totalHP += level1Class.pvInicial + (finalAttributes.CON || 0);
