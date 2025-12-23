@@ -135,23 +135,24 @@ function setupDataSubscriptions() {
         state.spells = DEFAULT_SPELLS;
 
         // Trigger Initial Renders
-        window.renderRacesList();
-        window.renderClassesList();
-        window.renderOriginsList();
-        window.renderDivinitiesList();
-        window.renderPowersList();
-        window.renderItemsList();
-        window.renderWeaponsList();
-        window.renderArmorsList();
-        window.renderSpellsList();
-
-        window.populateRaceSelect();
-        window.populateClassLvl1Select();
-        window.populateOriginSelect();
-        window.populateDivinitySelect();
-        
-        populateEquipmentSelects();
         orchestrateSheetUpdate({ resetHPPM: true, updateChoicesUI: true });
+        // Trigger Initial Renders
+        if (typeof window.renderRacesList === 'function') window.renderRacesList();
+        if (typeof window.renderClassesList === 'function') window.renderClassesList();
+        if (typeof window.renderOriginsList === 'function') window.renderOriginsList();
+        if (typeof window.renderDivinitiesList === 'function') window.renderDivinitiesList();
+        if (typeof window.renderPowersList === 'function') window.renderPowersList();
+        if (typeof window.renderItemsList === 'function') window.renderItemsList();
+        if (typeof window.renderWeaponsList === 'function') window.renderWeaponsList();
+        if (typeof window.renderArmorsList === 'function') window.renderArmorsList();
+        if (typeof window.renderSpellsList === 'function') window.renderSpellsList();
+
+        if (typeof window.populateRaceSelect === 'function') window.populateRaceSelect();
+        if (typeof window.populateClassLvl1Select === 'function') window.populateClassLvl1Select();
+        if (typeof window.populateOriginSelect === 'function') window.populateOriginSelect();
+        if (typeof window.populateDivinitySelect === 'function') window.populateDivinitySelect();
+
+        populateEquipmentSelects();
 
         // Hide Loading
         document.getElementById('loading').classList.add('hidden'); 
