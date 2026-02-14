@@ -6,11 +6,11 @@ const USE_OFFLINE_MODE = true;
 const DEFAULT_RACES = [ { "id": "r1", "name": "Anão", "source": "T20 - Livro Básico - Jogo do Ano", "bonuses": "CON: 2, SAB: 1, DES: -1", "attributeChoices": 0, "attributeBonus": 0, "attributeRestrictions": "", "tipoCriatura": "Humanoide", "tamanho": "Médio", "ataquesNaturais": "", "abilities": "Conhecimento das Rochas, Devagar e Sempre, Duro como Pedra, Tradição de Heredrimm" } ];
 const DEFAULT_ORIGINS = [ { "id": "o1", "name": "Acólito", "items": "Símbolo sagrado, Traje de sacerdote", "power": "Membro da Igreja", "source": "T20 - Livro Básico - Jogo do Ano", "numBeneficios": 2, "benefits_skills": "Vontade, Religião", "benefits_powers": "Curandeiro, Medicina" } ];
 const DEFAULT_DIVINITIES = [ { "id": "d1", "name": "Aharadak", "canalizarEnergia": "Negativa", "armaPreferida": "Corrente de espinhos", "powers": "Afinidade com a Tormenta, Êxtase da Loucura, Percepção Temporal, Rejeição Divina, Corromper Equipamento, Espalhar a Corrupção, Júbilo na Dor, Mediador da Tempestade", "obrigaçõesRestricoes": "No início de qualquer cena de ação, role 1d6. Com um resultado ímpar, você fica fascinado na primeira rodada, perdido em devaneios sobre a futilidade da vida (mesmo que seja imune a esta condição).", "source": "T20 - Livro Básico - Jogo do Ano" } ];
-const DEFAULT_CLASSES = [ 
-    { "id": "c1", "name": "Arcanista", "pvInicial": 8, "pvPerLevel": 2, "pmPerLevel": 6, "periciasDeClasse": "Misticismo, Vontade", "numPericiasAdicionais": 2, "periciasAdicionais": "Conhecimento, Diplomacia, Enganação, Guerra, Iniciativa, Intimidação, Intuição, Investigação, Nobreza, Ofício, Percepção", "levelAbilities": "1: Caminho do Arcanista, 1: Magias (1º Círculo), 2: Poder de Arcanista, 3: Poder de Arcanista, 4: Poder de Arcanista, 5: Magias (2º Círculo), 5: Poder de Arcanista, 6: Poder de Arcanista, 7: Poder de Arcanista, 8: Poder de Arcanista, 9: Magias (3º Círculo), 9: Poder de Arcanista, 10: Poder de Arcanista, 11: Poder de Arcanista, 12: Poder de Arcanista, 13: Magias (4º Círculo), 13: Poder de Arcanista, 14: Poder de Arcanista, 15: Poder de Arcanista, 16: Poder de Arcanista, 17: Magias (5º Círculo), 17: Poder de Arcanista, 18: Poder de Arcanista, 19: Poder de Arcanista, 20: Alta Arcana, 20: Poder de Arcanista", "effects": "num_poderes_concedidos: 1", "choices": JSON.stringify([ { "level": 1, "key": "caminho_arcanista", "label": "Caminho do Arcanista", "type": "select", "options": [ {"value": "bruxo", "label": "Bruxo", "description": "Você se aprofunda em magias que amaldiçoam e debilitam seus inimigos. Seu atributo-chave para magias é Carisma.", "effects": ""}, {"value": "feiticeiro", "label": "Feiticeiro", "description": "Seu poder mágico é inato. Você lança magias de forma intuitiva e poderosa. Seu atributo-chave para magias é Carisma.", "effects": ""}, {"value": "mago", "label": "Mago", "description": "Você é um estudioso da magia, aprendendo através de tomos e pergaminhos. Seu atributo-chave para magias é Inteligência.", "effects": ""} ] } ]), "source": "T20 - Livro Básico - Jogo do Ano" }, 
-    { "id": "c2", "name": "Bucaneiro", "pvInicial": 16, "pvPerLevel": 4, "pmPerLevel": 3, "periciasDeClasse": "Luta ou Pontaria, Reflexos", "numPericiasAdicionais": 4, "periciasAdicionais": "Acrobacia, Atletismo, Atuação, Enganação, Fortitude, Furtividade, Iniciativa, Intimidação, Jogatina, Luta, Ofício, Percepção, Pilotagem, Pontaria", "levelAbilities": "1: Audácia, 1: Insolência, 2: Evasão, 2: Poder de Bucaneiro, 3: Esquiva Sagaz, 3: Poder de Bucaneiro, 4: Poder de Bucaneiro, 5: Panache, 5: Poder de Bucaneiro, 6: Poder de Bucaneiro, 7: Esquiva Sagaz, 7: Poder de Bucaneiro, 8: Poder de Bucaneiro, 9: Poder de Bucaneiro, 10: Evasão Aprimorada, 10: Poder de Bucaneiro, 11: Esquiva Sagaz, 11: Poder de Bucaneiro, 12: Poder de Bucaneiro, 13: Poder de Bucaneiro, 14: Poder de Bucaneiro, 15: Esquiva Sagaz, 15: Poder de Bucaneiro, 16: Poder de Bucaneiro, 17: Poder de Bucaneiro, 18: Poder de Bucaneiro, 19: Esquiva Sagaz, 19: Poder de Bucaneiro, 20: Sorte de Nimb, 20: Poder de Bucaneiro", "source": "T20 - Livro Básico - Jogo do Ano" } 
-];
 const DEFAULT_POWERS = [ {"id": "p1", "name": "Acuidade com Arma", "type": "Combate", "prerequisites": "Des 1", "description": "Usa Destreza em vez de Força para ataques e danos com armas leves ou de arremesso."} ];
+const DEFAULT_CLASSES = [
+    { "id": "c1", "name": "Arcanista", "pvInicial": 8, "pvPerLevel": 2, "pmPerLevel": 6, "periciasDeClasse": "Misticismo, Vontade", "numPericiasAdicionais": 2, "periciasAdicionais": "Conhecimento, Diplomacia, Enganação, Guerra, Iniciativa, Intimidação, Intuição, Investigação, Nobreza, Ofício, Percepção", "levelAbilities": "1: Caminho do Arcanista, 1: Magias (1º Círculo), 2: Poder de Arcanista, 3: Poder de Arcanista, 4: Poder de Arcanista, 5: Magias (2º Círculo), 5: Poder de Arcanista, 6: Poder de Arcanista, 7: Poder de Arcanista, 8: Poder de Arcanista, 9: Magias (3º Círculo), 9: Poder de Arcanista, 10: Poder de Arcanista, 11: Poder de Arcanista, 12: Poder de Arcanista, 13: Magias (4º Círculo), 13: Poder de Arcanista, 14: Poder de Arcanista, 15: Poder de Arcanista, 16: Poder de Arcanista, 17: Magias (5º Círculo), 17: Poder de Arcanista, 18: Poder de Arcanista, 19: Poder de Arcanista, 20: Alta Arcana, 20: Poder de Arcanista", "effects": "num_poderes_concedidos: 1", "choices": JSON.stringify([ { "level": 1, "key": "caminho_arcanista", "label": "Caminho do Arcanista", "type": "select", "options": [ {"value": "bruxo", "label": "Bruxo", "description": "Você se aprofunda em magias que amaldiçoam e debilitam seus inimigos. Seu atributo-chave para magias é Carisma.", "effects": "attribute_magic: CAR"}, {"value": "feiticeiro", "label": "Feiticeiro", "description": "Seu poder mágico é inato. Você lança magias de forma intuitiva e poderosa. Seu atributo-chave para magias é Carisma.", "effects": "attribute_magic: CAR"}, {"value": "mago", "label": "Mago", "description": "Você é um estudioso da magia, aprendendo através de tomos e pergaminhos. Seu atributo-chave para magias é Inteligência.", "effects": "attribute_magic: INT"} ] } ]), "source": "T20 - Livro Básico - Jogo do Ano" },
+    { "id": "c2", "name": "Bucaneiro", "pvInicial": 16, "pvPerLevel": 4, "pmPerLevel": 3, "periciasDeClasse": "Luta ou Pontaria, Reflexos", "numPericiasAdicionais": 4, "periciasAdicionais": "Acrobacia, Atletismo, Atuação, Enganação, Fortitude, Furtividade, Iniciativa, Intimidação, Jogatina, Luta, Ofício, Percepção, Pilotagem, Pontaria", "levelAbilities": "1: Audácia, 1: Insolência, 2: Evasão, 2: Poder de Bucaneiro, 3: Esquiva Sagaz, 3: Poder de Bucaneiro, 4: Poder de Bucaneiro, 5: Panache, 5: Poder de Bucaneiro, 6: Poder de Bucaneiro, 7: Esquiva Sagaz, 7: Poder de Bucaneiro, 8: Poder de Bucaneiro, 9: Poder de Bucaneiro, 10: Evasão Aprimorada, 10: Poder de Bucaneiro, 11: Esquiva Sagaz, 11: Poder de Bucaneiro, 12: Poder de Bucaneiro, 13: Poder de Bucaneiro, 14: Poder de Bucaneiro, 15: Esquiva Sagaz, 15: Poder de Bucaneiro, 16: Poder de Bucaneiro, 17: Poder de Bucaneiro, 18: Poder de Bucaneiro, 19: Esquiva Sagaz, 19: Poder de Bucaneiro, 20: Sorte de Nimb, 20: Poder de Bucaneiro", "source": "T20 - Livro Básico - Jogo do Ano" }
+];
 const DEFAULT_ITEMS = [];
 const DEFAULT_WEAPONS = [];
 const DEFAULT_ARMORS = [];
@@ -40,7 +40,7 @@ const state = {
     userId: USE_OFFLINE_MODE ? 'offline-user' : null,
     allowedSources: ["Todos"],
     showTechnicalModifierNames: false,
-    currentCharacter: { race: null, class: null, origin: null, divinity: null, level: 1, baseAttributes: { FOR:0, DES:0, CON:0, INT:0, SAB:0, CAR:0 }, pointBuyTotal: 10, chosenAttributes: {}, chosenClassSkills: {}, chosenClassFixedSkills: {}, chosenOriginBenefits: {}, chosenDivinityPowers: {}, classChoices: {}, trainedSkills: [], learnedSpells: [], currentHP: 0, currentPM: 0, spellAttribute: 'INT', skillAttributes: {}, defenseAttribute: 'DES', equippedArmor: null, equippedShield: null, generalChoices: {} }
+    currentCharacter: { race: null, class: null, origin: null, divinity: null, level: 1, baseAttributes: { FOR:0, DES:0, CON:0, INT:0, SAB:0, CAR:0 }, pointBuyTotal: 10, chosenAttributes: {}, chosenClassSkills: {}, chosenClassFixedSkills: {}, chosenOriginBenefits: {}, chosenDivinityPowers: {}, classChoices: {}, trainedSkills: [], learnedSpells: [], currentHP: 0, currentPM: 0, spellAttribute: 'INT', skillAttributes: {}, defenseAttribute: 'DES', equippedArmor: null, equippedShield: null, generalChoices: {}, activeConditions: [] }
 };
 
 const collections = {
@@ -135,23 +135,24 @@ function setupDataSubscriptions() {
         state.spells = DEFAULT_SPELLS;
 
         // Trigger Initial Renders
-        window.renderRacesList();
-        window.renderClassesList();
-        window.renderOriginsList();
-        window.renderDivinitiesList();
-        window.renderPowersList();
-        window.renderItemsList();
-        window.renderWeaponsList();
-        window.renderArmorsList();
-        window.renderSpellsList();
-
-        window.populateRaceSelect();
-        window.populateClassLvl1Select();
-        window.populateOriginSelect();
-        window.populateDivinitySelect();
-        
-        populateEquipmentSelects();
         orchestrateSheetUpdate({ resetHPPM: true, updateChoicesUI: true });
+        // Trigger Initial Renders
+        if (typeof window.renderRacesList === 'function') window.renderRacesList();
+        if (typeof window.renderClassesList === 'function') window.renderClassesList();
+        if (typeof window.renderOriginsList === 'function') window.renderOriginsList();
+        if (typeof window.renderDivinitiesList === 'function') window.renderDivinitiesList();
+        if (typeof window.renderPowersList === 'function') window.renderPowersList();
+        if (typeof window.renderItemsList === 'function') window.renderItemsList();
+        if (typeof window.renderWeaponsList === 'function') window.renderWeaponsList();
+        if (typeof window.renderArmorsList === 'function') window.renderArmorsList();
+        if (typeof window.renderSpellsList === 'function') window.renderSpellsList();
+
+        if (typeof window.populateRaceSelect === 'function') window.populateRaceSelect();
+        if (typeof window.populateClassLvl1Select === 'function') window.populateClassLvl1Select();
+        if (typeof window.populateOriginSelect === 'function') window.populateOriginSelect();
+        if (typeof window.populateDivinitySelect === 'function') window.populateDivinitySelect();
+
+        populateEquipmentSelects();
 
         // Hide Loading
         document.getElementById('loading').classList.add('hidden'); 
@@ -202,6 +203,7 @@ function orchestrateSheetUpdate(options = {}) {
     if (shouldUpdate('defense')) renderDefenseSection(stats);
     if (shouldUpdate('magic')) renderMagicSection(stats);
     if (shouldUpdate('learnedSpells')) renderLearnedSpells();
+    if (shouldUpdate('conditions')) renderConditionsSection(stats);
     if (shouldUpdate('skills')) renderSkillsSection(stats);
     if (shouldUpdate('abilities')) renderAbilitiesAndItemsSection(stats);
     if (shouldUpdate('modifiers')) renderGlobalModifiersSection(stats);
@@ -216,6 +218,38 @@ function calculateCharacterStats() {
     const attributeSources = ALL_ATTRIBUTES.reduce((acc, key) => ({ ...acc, [key]: [{source: 'Base', value: finalAttributes[key]}]}), {});
     const globalModifiers = FIXED_MODIFIERS.reduce((acc, mod) => ({ ...acc, [mod.key]: 0 }), {});
     const modifierSources = FIXED_MODIFIERS.reduce((acc, mod) => ({ ...acc, [mod.key]: [] }), {});
+    // Apply Conditions
+    if (char.activeConditions) {
+        char.activeConditions.forEach(condId => {
+            const cond = CONDITIONS.find(c => c.id === condId);
+            if (cond && cond.effects) {
+                Object.entries(cond.effects).forEach(([effKey, val]) => {
+                    if (effKey === 'bonus_pericia_all') {
+                        Object.keys(SKILL_DEFAULT_ATTR).forEach(skill => {
+                            const key = `bonus_pericia_${skill}`;
+                            if(globalModifiers[key] !== undefined) {
+                                globalModifiers[key] += val;
+                                modifierSources[key].push(`Condição (${cond.name}): ${val}`);
+                            }
+                        });
+                    } else if (effKey === 'bonus_pericia_all_no_attack') {
+                        Object.keys(SKILL_DEFAULT_ATTR).forEach(skill => {
+                            if (skill !== 'Luta' && skill !== 'Pontaria') {
+                                const key = `bonus_pericia_${skill}`;
+                                if(globalModifiers[key] !== undefined) {
+                                    globalModifiers[key] += val;
+                                    modifierSources[key].push(`Condição (${cond.name}): ${val}`);
+                                }
+                            }
+                        });
+                    } else if (globalModifiers[effKey] !== undefined) {
+                        globalModifiers[effKey] += val;
+                        modifierSources[effKey].push(`Condição (${cond.name}): ${val}`);
+                    }
+                });
+            }
+        });
+    }
 
     if (race) {
         if (race.bonuses) {
@@ -308,10 +342,48 @@ function calculateCharacterStats() {
     });
 
     let totalHP = 0, totalPM = 0;
+    // Process General Choices (Class Paths, etc.)
+    if (char.generalChoices) {
+        Object.entries(char.generalChoices).forEach(([key, val]) => {
+            Object.keys(classLevels).forEach(classId => {
+                const cls = state.classes.find(c => c.id === classId);
+                if (cls && cls.choices) {
+                    try {
+                        const choicesDef = JSON.parse(cls.choices);
+                        choicesDef.forEach(cDef => {
+                            if (`class_${cDef.key}` === key || `class_${cDef.key}` === key.replace('class_', '')) {
+                                const option = cDef.options.find(o => o.value === val);
+                                if (option && option.effects) {
+                                    option.effects.split(',').forEach(eff => {
+                                        const [effKey, effVal] = eff.split(':').map(s => s.trim());
+                                        if (effKey === 'attribute_magic') {
+                                            char.spellAttribute = effVal;
+                                        } else if (globalModifiers[effKey] !== undefined) {
+                                            const v = parseInt(effVal);
+                                            globalModifiers[effKey] += v;
+                                            modifierSources[effKey].push(`${option.label}: ${v}`);
+                                        }
+                                    });
+                                }
+                            }
+                        });
+                    } catch (e) {}
+                }
+            });
+        });
+    }
     const level1Class = state.classes.find(c => c.id === classChoices[1]);
     if (level1Class) {
         totalHP += level1Class.pvInicial + (finalAttributes.CON || 0);
-        totalPM += level1Class.pmPerLevel;
+
+        // PM Logic: Initial PM + Attribute Key (Default INT if not specified, but usually Class has key attribute.
+        // T20 JdA: "PM Iniciais: X + mod. atributo chave".
+        // Current system stores spellAttribute in char.spellAttribute (default INT).
+        // Let's use that for now.
+        const pmAttrKey = char.spellAttribute || 'INT';
+        const pmAttrVal = finalAttributes[pmAttrKey] || 0;
+        totalPM += level1Class.pmPerLevel + pmAttrVal;
+
         for (let i = 2; i <= level; i++) {
             const levelIClass = state.classes.find(c => c.id === (classChoices[i] || classChoices[1]));
             if (levelIClass) {
@@ -384,20 +456,59 @@ function renderAttributesSection(stats) {
 }
 
 function renderResourcesSection(stats, resetCurrentHPPM) {
-    const { totalHP, totalPM } = stats;
+    const { totalHP, totalPM, globalModifiers, char, level1Class, finalAttributes } = stats;
+
     if (resetCurrentHPPM) {
         state.currentCharacter.currentHP = totalHP;
         state.currentCharacter.currentPM = totalPM;
     }
-    if (!document.getElementById('resources-display').innerHTML) {
-        document.getElementById('resources-display').innerHTML = `
-            <div><div class="flex justify-between items-baseline text-sm mb-1"><span class="font-semibold text-red-400">Pontos de Vida (PV)</span><span class="flex items-center">vida atual <input type="number" id="current-hp" class="w-12 text-center bg-transparent border-b border-gray-600 focus:outline-none mx-1"> / <span id="max-hp" class="ml-1"></span><span class="ml-1">vida máxima</span></span></div><div class="w-full bg-gray-700 rounded-full h-2.5"><div id="hp-bar" class="bg-red-600 h-2.5 rounded-full"></div></div></div>
-            <div><div class="flex justify-between items-baseline text-sm mb-1"><span class="font-semibold text-blue-400">Pontos de Mana (PM)</span><span class="flex items-center">mana atual <input type="number" id="current-pm" class="w-12 text-center bg-transparent border-b border-gray-600 focus:outline-none mx-1"> / <span id="max-pm" class="ml-1"></span><span class="ml-1">mana máxima</span></span></div><div class="w-full bg-gray-700 rounded-full h-2.5"><div id="pm-bar" class="bg-blue-600 h-2.5 rounded-full"></div></div></div>`;
+
+    const hpSources = [];
+    if (level1Class) {
+        const base = level1Class.pvInicial;
+        const con = finalAttributes.CON || 0;
+        hpSources.push(`Classe (${level1Class.name}): ${base}`);
+        hpSources.push(`Constituição (Nv 1): ${con >= 0 ? '+' : ''}${con}`);
     }
-    document.getElementById('max-hp').textContent = totalHP;
-    document.getElementById('max-pm').textContent = totalPM;
-    document.getElementById('current-hp').value = state.currentCharacter.currentHP;
-    document.getElementById('current-pm').value = state.currentCharacter.currentPM;
+
+    const levels = char.level - 1;
+    if (levels > 0) {
+         let levelSum = 0;
+         for (let i = 2; i <= char.level; i++) {
+            const classId = char.classChoices[i] || char.classChoices[1];
+            const cls = state.classes.find(c => c.id === classId);
+            if (cls) levelSum += cls.pvPerLevel;
+         }
+         hpSources.push(`Níveis (2-${char.level}): +${levelSum}`);
+         const conSum = (finalAttributes.CON || 0) * levels;
+         hpSources.push(`Constituição (2-${char.level}): ${conSum >= 0 ? '+' : ''}${conSum}`);
+    }
+
+    if (globalModifiers.PV_adc) hpSources.push(`Bônus Fixo: +${globalModifiers.PV_adc}`);
+    if (globalModifiers.PV_adc_nivel) hpSources.push(`Por Nível: +${globalModifiers.PV_adc_nivel * char.level}`);
+    if (globalModifiers.PV_adc_impar) hpSources.push(`Níveis Ímpares: +${globalModifiers.PV_adc_impar * Math.ceil(char.level/2)}`);
+
+    const resourcesHtml = `
+        <div class="group relative">
+            <div class="flex justify-between items-baseline text-sm mb-1">
+                <span class="font-semibold text-red-400 cursor-help border-b border-dashed border-red-900">Pontos de Vida (PV)</span>
+                <span class="flex items-center">vida atual <input type="number" id="current-hp" class="w-12 text-center bg-transparent border-b border-gray-600 focus:outline-none mx-1" value="${state.currentCharacter.currentHP}"> / <span id="max-hp" class="ml-1">${totalHP}</span></span>
+            </div>
+            <div class="hidden group-hover:block absolute z-10 bottom-full left-0 bg-black border border-gray-600 p-2 rounded text-xs whitespace-nowrap mb-1 z-50">
+                <div class="font-bold mb-1">Origem dos PV</div>
+                ${hpSources.map(s => `<div>${s}</div>`).join('')}
+            </div>
+            <div class="w-full bg-gray-700 rounded-full h-2.5"><div id="hp-bar" class="bg-red-600 h-2.5 rounded-full"></div></div>
+        </div>
+        <div class="mt-4 group relative">
+             <div class="flex justify-between items-baseline text-sm mb-1">
+                <span class="font-semibold text-blue-400 cursor-help border-b border-dashed border-blue-900">Pontos de Mana (PM)</span>
+                <span class="flex items-center">mana atual <input type="number" id="current-pm" class="w-12 text-center bg-transparent border-b border-gray-600 focus:outline-none mx-1" value="${state.currentCharacter.currentPM}"> / <span id="max-pm" class="ml-1">${totalPM}</span></span>
+            </div>
+            <div class="w-full bg-gray-700 rounded-full h-2.5"><div id="pm-bar" class="bg-blue-600 h-2.5 rounded-full"></div></div>
+        </div>`;
+
+    document.getElementById('resources-display').innerHTML = resourcesHtml;
     updateResourceBars();
 }
 
@@ -913,6 +1024,688 @@ window.renderSpellsList = renderSpellsList;
 
 function capitalize(str) { return str ? str.charAt(0).toUpperCase() + str.slice(1) : ''; }
 
-</script>
-</body>
-</html>
+
+function setupPointBuyCalculator() {
+    const container = document.getElementById('point-buy-calculator');
+    const totalInput = document.getElementById('point-buy-total');
+    const remainingSpan = document.getElementById('point-buy-remaining');
+
+    if (!container || !totalInput || !remainingSpan) return;
+
+    function renderCalculator() {
+        let currentCost = 0;
+        const attributes = state.currentCharacter.baseAttributes;
+
+        // Calculate current cost
+        Object.values(attributes).forEach(val => {
+            const cost = POINT_BUY_COST[val.toString()] || 0;
+            currentCost += cost;
+        });
+
+        const totalPoints = parseInt(totalInput.value) || 10;
+        const remaining = totalPoints - currentCost;
+
+        remainingSpan.textContent = remaining;
+        remainingSpan.className = remaining < 0 ? 'font-bold text-lg text-red-500' : 'font-bold text-lg text-green-500';
+        state.currentCharacter.pointBuyTotal = totalPoints;
+
+        container.innerHTML = ALL_ATTRIBUTES.map(attr => {
+            const val = attributes[attr];
+            const cost = POINT_BUY_COST[val.toString()] || 0;
+
+            const canIncrease = val < 4;
+            const canDecrease = val > -1;
+
+            return `
+            <div class="flex justify-between items-center glass-effect p-2 rounded">
+                <span class="font-bold w-8">${attr}</span>
+                <div class="flex items-center space-x-3">
+                    <button class="w-8 h-8 rounded bg-gray-700 hover:bg-gray-600 flex items-center justify-center ${!canDecrease ? 'opacity-50 cursor-not-allowed' : ''}"
+                        onclick="updateAttribute('${attr}', ${val - 1})" ${!canDecrease ? 'disabled' : ''}>-</button>
+                    <span class="w-8 text-center font-semibold ${val < 0 ? 'text-red-400' : 'text-white'}">${val}</span>
+                    <button class="w-8 h-8 rounded bg-gray-700 hover:bg-gray-600 flex items-center justify-center ${!canIncrease ? 'opacity-50 cursor-not-allowed' : ''}"
+                        onclick="updateAttribute('${attr}', ${val + 1})" ${!canIncrease ? 'disabled' : ''}>+</button>
+                </div>
+                <span class="text-xs text-gray-400 w-12 text-right">Custo: ${cost}</span>
+            </div>
+            `;
+        }).join('');
+    }
+
+    window.updateAttribute = (attr, newVal) => {
+        if (newVal < -1 || newVal > 4) return;
+        state.currentCharacter.baseAttributes[attr] = newVal;
+        renderCalculator();
+        orchestrateSheetUpdate({ only: ['attributes', 'resources', 'defense', 'skills', 'magic', 'modifiers'] });
+    };
+
+    totalInput.addEventListener('change', renderCalculator);
+    renderCalculator();
+}
+
+function updateResourceBars() {
+    const { currentHP, currentPM } = state.currentCharacter;
+    const maxHP = parseInt(document.getElementById('max-hp')?.textContent) || 1;
+    const maxPM = parseInt(document.getElementById('max-pm')?.textContent) || 1;
+
+    const hpPercent = Math.max(0, Math.min(100, (currentHP / maxHP) * 100));
+    const pmPercent = Math.max(0, Math.min(100, (currentPM / maxPM) * 100));
+
+    const hpBar = document.getElementById('hp-bar');
+    const pmBar = document.getElementById('pm-bar');
+
+    if(hpBar) hpBar.style.width = `${hpPercent}%`;
+    if(pmBar) pmBar.style.width = `${pmPercent}%`;
+}
+
+function renderDefenseSection(stats) {
+    const { finalAttributes, globalModifiers, char, modifierSources } = stats;
+    const desMod = finalAttributes['DES'] || 0;
+    const armorId = char.equippedArmor;
+    const shieldId = char.equippedShield;
+    const armor = state.armors.find(a => a.id === armorId);
+    const shield = state.armors.find(a => a.id === shieldId);
+
+    let defense = 10;
+    let explanation = `Base: 10`;
+    let sources = [{source: 'Base', value: 10}];
+
+    // Armor & Dexterity Limit
+    let armorBonus = 0;
+    let maxDex = 999;
+
+    if (armor) {
+        armorBonus = parseInt(armor.bonus) || 0;
+        defense += armorBonus;
+        explanation += `<br>Armadura (${armor.name}): +${armorBonus}`;
+        sources.push({source: `Armadura (${armor.name})`, value: armorBonus});
+
+        if (armor.proficiencia === 'Armaduras Pesadas') maxDex = 0; // T20 Rule: Heavy armor usually denies DEX to Defense, or strict limit. Actually T20 JdA p. 104: "Heavy Armor: you apply NO Dex bonus to Defense".
+        // Need to check specific armor "max dex" property if implemented, but usually Heavy = 0, Light = unlimited (but some have limits).
+        // Let's assume the armor object has 'penalidade' and 'bonus'. The rule for Heavy Armor is simple.
+        // For this implementation, we will check if proficiencia is 'Armaduras Pesadas'.
+    }
+
+    // Apply DEX (limited by armor)
+    let dexToApply = desMod;
+    if (maxDex === 0) dexToApply = 0; // Heavy armor
+
+    // Check for "Armor of the Knight" or similar powers that allow DEX in heavy armor? For now, standard rules.
+
+    if (dexToApply !== 0) {
+        defense += dexToApply;
+        explanation += `<br>Destreza: ${dexToApply >= 0 ? '+' : ''}${dexToApply}`;
+        sources.push({source: 'Destreza', value: dexToApply});
+    }
+
+    if (shield) {
+        const shieldBonus = parseInt(shield.bonus) || 0;
+        defense += shieldBonus;
+        explanation += `<br>Escudo (${shield.name}): +${shieldBonus}`;
+        sources.push({source: `Escudo (${shield.name})`, value: shieldBonus});
+    }
+
+    // Other modifiers
+    if(globalModifiers.bonus_armadura) {
+        defense += globalModifiers.bonus_armadura;
+        explanation += `<br>Outros: ${globalModifiers.bonus_armadura}`;
+        sources.push({source: 'Outros Modificadores', value: globalModifiers.bonus_armadura});
+    }
+    ALL_ATTRIBUTES.forEach(attr => {
+        const modKey = `soma_${attr.toLowerCase()}_na_defesa`;
+        if(globalModifiers[modKey]) {
+            defense += finalAttributes[attr];
+            sources.push({source: `Soma ${attr} na Defesa`, value: finalAttributes[attr]});
+        }
+    });
+
+    const displayEl = document.getElementById('defense-display');
+    if (displayEl) {
+        displayEl.innerHTML = `
+            <div class="flex justify-between items-center mb-4"><h3 class="text-lg font-semibold text-red-400">Defesa</h3><div class="text-3xl font-bold">${defense}</div></div>
+            <div class="space-y-4">
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-300">Armadura</label>
+                        <select id="select-armor" class="form-select mt-1 block w-full text-sm bg-gray-800 border-gray-600 text-white"></select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-300">Escudo</label>
+                        <select id="select-shield" class="form-select mt-1 block w-full text-sm bg-gray-800 border-gray-600 text-white"></select>
+                    </div>
+                </div>
+                <div class="text-xs text-gray-400 glass-effect p-2 rounded">
+                    <strong>Detalhes:</strong>
+                    ${sources.map(s => `<div>${s.source}: ${s.value >= 0 ? '+' : ''}${s.value}</div>`).join('')}
+                </div>
+            </div>
+        `;
+        populateEquipmentSelects(); // Re-populate to keep selection? No, this resets selection if we are not careful.
+        // Wait, populateEquipmentSelects clears the innerHTML. We should populate FIRST then set value.
+        // Actually populateEquipmentSelects is global and targets the IDs.
+        // We just re-created the IDs. So we need to call populate and then set values.
+
+        populateEquipmentSelects();
+        document.getElementById('select-armor').value = char.equippedArmor || "";
+        document.getElementById('select-shield').value = char.equippedShield || "";
+    }
+}
+
+function renderMagicSection(stats) {
+    const { finalAttributes, globalModifiers, char } = stats;
+    const attrKey = char.spellAttribute || 'INT';
+    const attrVal = finalAttributes[attrKey] || 0;
+    const cd = 10 + Math.floor(char.level / 2) + attrVal + (globalModifiers.bonus_cd || 0);
+
+    const displayEl = document.getElementById('spell-cd-display');
+    if (displayEl) {
+        displayEl.innerHTML = `
+            <div class="flex justify-between items-center mb-4"><h3 class="text-lg font-semibold text-red-400">Magia</h3></div>
+            <div class="glass-effect p-3 rounded flex justify-between items-center mb-3">
+                <span class="font-bold">CD das Magias</span>
+                <span class="text-2xl font-bold text-blue-400">${cd}</span>
+            </div>
+            <div class="mb-3">
+                 <label class="block text-sm font-medium text-gray-300">Atributo-Chave</label>
+                 <select id="spell-attribute-select" class="form-select mt-1 block w-full text-sm">
+                    ${ALL_ATTRIBUTES.map(a => `<option value="${a}" ${a === attrKey ? 'selected' : ''}>${a}</option>`).join('')}
+                 </select>
+            </div>
+            <div class="text-xs text-gray-400">
+                Base (10) + 1/2 Nível (${Math.floor(char.level/2)}) + Atributo (${attrVal}) + Outros (${globalModifiers.bonus_cd || 0})
+            </div>
+        `;
+    }
+}
+
+function renderLearnedSpells() {
+    const list = document.getElementById('learned-spells-display');
+    if (!list) return;
+    const spells = state.currentCharacter.learnedSpells || [];
+
+    if (spells.length === 0) {
+        list.innerHTML = `
+            <div class="text-center py-4">
+                <p class="text-gray-400 mb-2">Nenhuma magia aprendida.</p>
+                <button id="learn-spell-btn" class="btn-primary px-3 py-1 rounded text-sm">Aprender Magia</button>
+            </div>
+        `;
+    } else {
+        list.innerHTML = `
+            <div class="flex justify-end mb-2"><button id="learn-spell-btn" class="btn-primary px-3 py-1 rounded text-sm">+ Aprender</button></div>
+            <div class="space-y-2">
+                ${spells.map(spellId => {
+                    const spell = state.spells.find(s => s.id === spellId);
+                    return spell ? `<div class="glass-effect p-2 rounded flex justify-between items-center text-sm"><span>${spell.name} (${spell.circulo}º C)</span><button onclick="forgetSpell('${spellId}')" class="text-red-500 hover:text-red-300">&times;</button></div>` : '';
+                }).join('')}
+            </div>
+        `;
+    }
+}
+
+window.forgetSpell = (spellId) => {
+    state.currentCharacter.learnedSpells = state.currentCharacter.learnedSpells.filter(id => id !== spellId);
+    orchestrateSheetUpdate({ only: ['learnedSpells'] });
+};
+
+function openLearnSpellModal() {
+    const allSpells = state.spells.filter(s => state.allowedSources.includes("Todos") || state.allowedSources.includes(s.source) || (!s.source && state.allowedSources.includes("T20 - Livro Básico - Jogo do Ano")));
+    // Filter by class circles if implemented, for now show all sorted by circle
+    allSpells.sort((a, b) => a.circulo - b.circulo || a.name.localeCompare(b.name));
+
+    const content = `
+        <div class="space-y-4">
+            <input type="text" id="spell-search-modal" placeholder="Buscar magia..." class="form-input w-full mb-2" onkeyup="filterModalSpells()">
+            <div id="modal-spells-list" class="max-h-96 overflow-y-auto space-y-2">
+                ${allSpells.map(spell => {
+                    const isLearned = state.currentCharacter.learnedSpells.includes(spell.id);
+                    return `
+                    <div class="glass-effect p-2 rounded flex justify-between items-center spell-item" data-name="${spell.name.toLowerCase()}">
+                        <div>
+                            <div class="font-bold text-white">${spell.name}</div>
+                            <div class="text-xs text-gray-400">${spell.circulo}º Círculo - ${spell.escola}</div>
+                        </div>
+                        <button onclick="toggleLearnSpell('${spell.id}')" class="px-3 py-1 rounded text-xs ${isLearned ? 'bg-red-900 text-red-200' : 'bg-green-700 text-white'}">
+                            ${isLearned ? 'Esquecer' : 'Aprender'}
+                        </button>
+                    </div>`;
+                }).join('')}
+            </div>
+        </div>
+    `;
+
+    openModal('Aprender Magias', content, { isAction: true }); // isAction hides Save button
+
+    window.filterModalSpells = () => {
+        const term = document.getElementById('spell-search-modal').value.toLowerCase();
+        document.querySelectorAll('.spell-item').forEach(el => {
+            el.style.display = el.dataset.name.includes(term) ? 'flex' : 'none';
+        });
+    };
+
+    window.toggleLearnSpell = (id) => {
+        const idx = state.currentCharacter.learnedSpells.indexOf(id);
+        if (idx >= 0) state.currentCharacter.learnedSpells.splice(idx, 1);
+        else state.currentCharacter.learnedSpells.push(id);
+        orchestrateSheetUpdate({ only: ['learnedSpells'] });
+        openLearnSpellModal(); // Refresh modal
+    };
+}
+
+function renderSkillsSection(stats) {
+    const { finalAttributes, char, originBenefitSkills, level1Class, classLevels, modifierSources, globalModifiers } = stats;
+    const list = document.getElementById('skills-list');
+    const counter = document.getElementById('skills-counter');
+    if (!list) return;
+
+    // Calculate Trained Skills Limit
+    let trainedCount = 0;
+    let maxTrained = 0;
+
+    // Logic for max trained: Class Base + INT mod.
+    // However, T20 JdA has fixed skills + choices.
+    // The "trainedSkills" array in state tracks *user chosen* skills (from INT or other sources like "Perícia Adicional").
+    // The "chosenClassSkills" and "chosenOriginBenefits" track those specific choices.
+    // We need to merge all sources to know what is trained.
+
+    const trainedSet = new Set();
+
+    // 1. Class Fixed
+    if (level1Class?.periciasDeClasse) {
+        level1Class.periciasDeClasse.split(',').forEach(p => {
+             const clean = p.trim();
+             if (!clean.includes(' ou ')) trainedSet.add(clean);
+        });
+    }
+    Object.values(char.chosenClassFixedSkills).forEach(s => s && trainedSet.add(s));
+
+    // 2. Class Choices (Adicionais)
+    Object.values(char.chosenClassSkills).forEach(s => s && trainedSet.add(s));
+
+    // 3. Origin
+    originBenefitSkills.forEach(s => trainedSet.add(s));
+
+    // 4. Intelligence Bonus
+    // User can select INT mod skills. We store them in char.trainedSkills (generic pool).
+    // The limit is INT mod.
+    const intMod = finalAttributes['INT'] || 0;
+    const intSkillsLimit = Math.max(0, intMod);
+    // Also "Perícia Adicional" powers add to this limit or separate? Usually separate.
+    // For simplicity, let's treat char.trainedSkills as the pool for INT skills + Extra.
+
+    const extraSkillsLimit = (globalModifiers.per_apren || 0);
+    const totalGenericSlots = intSkillsLimit + extraSkillsLimit;
+
+    // 5. Apply User Generic Choices
+    char.trainedSkills.forEach(s => trainedSet.add(s));
+
+    // Render Logic
+    const skillKeys = Object.keys(SKILL_DEFAULT_ATTR).sort();
+
+    list.innerHTML = skillKeys.map(skill => {
+        const attr = SKILL_DEFAULT_ATTR[skill];
+        const attrVal = finalAttributes[attr] || 0;
+        const isTrained = trainedSet.has(skill);
+        const levelBonus = Math.floor(char.level / 2);
+        const trainingBonus = isTrained ? (char.level >= 7 ? 4 : 2) : 0; // +2 até nv 6, +4 nv 7+
+        const itemBonus = 0; // To do: implement item bonuses check
+        const otherBonus = (globalModifiers[`bonus_pericia_${skill}`] || 0);
+
+        // Armor Penalty
+        let penalty = 0;
+        const armor = state.armors.find(a => a.id === char.equippedArmor);
+        const shield = state.armors.find(a => a.id === char.equippedShield);
+
+        if (['ACR', 'FUR', 'LAD'].includes(skill.substring(0, 3).toUpperCase())) { // Perícias afetadas por carga/armadura. T20: Acrobacia, Furtividade, Ladinagem usually.
+            // Check actual T20 list: Acrobacia, Furtividade, Ladinagem.
+             if (skill === 'Acrobacia' || skill === 'Furtividade' || skill === 'Ladinagem') {
+                 if (armor) penalty += (parseInt(armor.penalidade) || 0);
+                 if (shield) penalty += (parseInt(shield.penalidade) || 0);
+             }
+        }
+
+        // Reduce penalty features
+        if (armor && armor.proficiencia === 'Armaduras Leves') penalty += (globalModifiers.reducao_penalidade_armaduras_leves || 0);
+        if (armor && armor.proficiencia === 'Armaduras Pesadas') penalty += (globalModifiers.reducao_penalidade_armaduras_pesadas || 0);
+        if (shield) penalty += (globalModifiers.reducao_penalidade_escudos || 0);
+        if (penalty > 0) penalty = 0; // Penalty is negative number usually in DB, but here let's assume property is negative.
+        // If property is stored as positive (e.g. 2 means -2), we subtract.
+        // Let's assume standard input: "Penalidade: 2" means -2 check.
+
+        // Let's recalculate penalty with correct sign
+        let totalPenalty = 0;
+        if (skill === 'Acrobacia' || skill === 'Furtividade' || skill === 'Ladinagem') {
+             if (armor) totalPenalty -= Math.abs(parseInt(armor.penalidade) || 0);
+             if (shield) totalPenalty -= Math.abs(parseInt(shield.penalidade) || 0);
+        }
+        // Apply reductions (which are positive numbers reducing the penalty magnitude)
+        // Wait, T20 reductions usually say "reduz a penalidade em 2". So -5 becomes -3.
+        if (totalPenalty < 0) {
+             let reduction = 0;
+             if (armor && armor.proficiencia === 'Armaduras Leves') reduction += (globalModifiers.reducao_penalidade_armaduras_leves || 0);
+             if (armor && armor.proficiencia === 'Armaduras Pesadas') reduction += (globalModifiers.reducao_penalidade_armaduras_pesadas || 0);
+             if (shield) reduction += (globalModifiers.reducao_penalidade_escudos || 0);
+             totalPenalty = Math.min(0, totalPenalty + reduction);
+        }
+
+        const total = levelBonus + attrVal + trainingBonus + otherBonus + totalPenalty;
+
+        // Tooltip Sources
+        const sources = [
+            `1/2 Nível: +${levelBonus}`,
+            `Atributo (${attr}): ${attrVal >= 0 ? '+' : ''}${attrVal}`,
+            isTrained ? `Treino: +${trainingBonus}` : null,
+            otherBonus ? `Outros: ${otherBonus >= 0 ? '+' : ''}${otherBonus}` : null,
+            totalPenalty ? `Penalidade: ${totalPenalty}` : null
+        ].filter(x => x).join('<br>');
+
+        // Checkbox logic: Can we train this skill?
+        // Only if we have generic slots remaining AND it is not already trained by fixed sources.
+        const isFixedTrained = trainedSet.has(skill) && !char.trainedSkills.includes(skill);
+        const isGenericTrained = char.trainedSkills.includes(skill);
+
+        return `
+            <div class="grid grid-cols-12 gap-2 items-center text-sm glass-effect p-2 rounded group relative">
+                <div class="col-span-1 text-center">
+                    <input type="checkbox" class="form-checkbox text-red-500 bg-gray-700 border-gray-600 rounded"
+                        ${isTrained ? 'checked' : ''}
+                        ${isFixedTrained ? 'disabled opacity-50' : ''}
+                        onchange="toggleSkillTraining('${skill}', this.checked)">
+                </div>
+                <div class="col-span-3 font-semibold relative">
+                    ${skill} ${totalPenalty < 0 ? '<span class="text-red-500 text-xs">*</span>' : ''}
+                    <div class="hidden group-hover:block absolute z-10 left-0 bottom-full bg-black border border-gray-600 p-2 rounded text-xs whitespace-nowrap mb-1">
+                        ${sources}
+                    </div>
+                </div>
+                <div class="col-span-1 text-center font-bold text-lg text-white">${total >= 0 ? '+' : ''}${total}</div>
+                <div class="col-span-2 text-center text-gray-400 text-xs">${attr}</div>
+                <div class="col-span-1 text-center text-gray-400 text-xs">${attrVal}</div>
+                <div class="col-span-2 text-center text-gray-400 text-xs">${trainingBonus}</div>
+                <div class="col-span-2 text-center text-gray-400 text-xs">${otherBonus + totalPenalty}</div>
+            </div>
+        `;
+    }).join('');
+
+    // Update Counter
+    const usedSlots = char.trainedSkills.length;
+    counter.textContent = `Treinadas (Int/Extra): ${usedSlots} / ${totalGenericSlots}`;
+    counter.className = usedSlots > totalGenericSlots ? 'text-red-500 text-sm font-semibold' : 'text-sm font-semibold text-green-400';
+
+    window.toggleSkillTraining = (skill, isChecked) => {
+        if (isChecked) {
+            if (!state.currentCharacter.trainedSkills.includes(skill)) {
+                state.currentCharacter.trainedSkills.push(skill);
+            }
+        } else {
+            state.currentCharacter.trainedSkills = state.currentCharacter.trainedSkills.filter(s => s !== skill);
+        }
+        orchestrateSheetUpdate({ only: ['skills'] });
+    };
+}
+
+function renderGlobalModifiersSection(stats) {
+    const { modifierSources, globalModifiers } = stats;
+    const container = document.getElementById('global-modifiers-display');
+    if (!container) return;
+
+    const searchTerm = document.getElementById('modifier-search-input')?.value.toLowerCase();
+
+    // Flatten and display
+    const activeMods = Object.entries(modifierSources).filter(([key, sources]) => {
+         const val = globalModifiers[key];
+         // Show if value is not 0 OR sources exist (some bools might be 0 but present)
+         // Actually bools are 0 or 1.
+         return (val !== 0 && val !== undefined) || sources.length > 0;
+    });
+
+    if (activeMods.length === 0) {
+        container.innerHTML = '<p class="text-gray-500">Nenhum modificador ativo.</p>';
+        return;
+    }
+
+    container.innerHTML = activeMods.map(([key, sources]) => {
+        const def = FIXED_MODIFIERS.find(m => m.key === key);
+        const name = def ? def.name : key;
+        const val = globalModifiers[key];
+
+        if (searchTerm && !name.toLowerCase().includes(searchTerm) && !key.toLowerCase().includes(searchTerm)) return '';
+
+        return `
+            <div class="glass-effect p-3 rounded">
+                <div class="flex justify-between items-center mb-1">
+                    <span class="font-bold text-red-300">${name} <span class="text-xs text-gray-500 font-normal">(${state.showTechnicalModifierNames ? key : def?.category || 'Geral'})</span></span>
+                    <span class="text-xl font-bold">${val}</span>
+                </div>
+                <div class="text-xs text-gray-400 pl-2 border-l-2 border-gray-700 space-y-1">
+                    ${sources.map(s => `<div>${s}</div>`).join('')}
+                </div>
+            </div>
+        `;
+    }).join('');
+}
+
+// --- HELPER FUNCTIONS FOR FORMS (ADMIN) ---
+
+function getRaceFormHtml() {
+    return `
+    <form class="space-y-4">
+        <div><label class="block text-sm">Nome</label><input name="name" class="form-input w-full" required></div>
+        <div><label class="block text-sm">Bônus de Atributos (Ex: CON: 2, FOR: 1)</label><input name="bonuses" class="form-input w-full"></div>
+        <div class="grid grid-cols-2 gap-4">
+            <div><label class="block text-sm">Escolhas de Atributo (Qtd)</label><input name="attributeChoices" type="number" class="form-input w-full"></div>
+            <div><label class="block text-sm">Bônus da Escolha</label><input name="attributeBonus" type="number" class="form-input w-full"></div>
+        </div>
+        <div><label class="block text-sm">Restrições de Escolha (Ex: INT, CAR)</label><input name="attributeRestrictions" class="form-input w-full"></div>
+        <div class="grid grid-cols-2 gap-4">
+            <div><label class="block text-sm">Tipo</label><input name="tipoCriatura" class="form-input w-full"></div>
+            <div><label class="block text-sm">Tamanho</label><input name="tamanho" class="form-input w-full"></div>
+        </div>
+        <div><label class="block text-sm">Habilidades (Nomes sep. por vírgula)</label><textarea name="abilities" class="form-input w-full h-20"></textarea></div>
+        <div><label class="block text-sm">Ataques Naturais</label><textarea name="ataquesNaturais" class="form-input w-full h-20"></textarea></div>
+        <div><label class="block text-sm">Efeitos Técnicos (Ex: deslocamento: 3, PV_adc_nivel: 1)</label><textarea name="effects" class="form-input w-full h-20"></textarea></div>
+        <div><label class="block text-sm">Fonte</label><input name="source" class="form-input w-full" list="source-list"></div>
+    </form>`;
+}
+
+function getClassFormHtml() {
+    return `
+    <form class="space-y-4">
+        <div><label class="block text-sm">Nome</label><input name="name" class="form-input w-full" required></div>
+        <div class="grid grid-cols-3 gap-4">
+            <div><label class="block text-sm">PV Inicial</label><input name="pvInicial" type="number" class="form-input w-full"></div>
+            <div><label class="block text-sm">PV/Nível</label><input name="pvPerLevel" type="number" class="form-input w-full"></div>
+            <div><label class="block text-sm">PM/Nível</label><input name="pmPerLevel" type="number" class="form-input w-full"></div>
+        </div>
+        <div><label class="block text-sm">Perícias de Classe (Obrigatórias/Opções)</label><input name="periciasDeClasse" class="form-input w-full"></div>
+        <div class="grid grid-cols-2 gap-4">
+            <div><label class="block text-sm">Qtd Adicional</label><input name="numPericiasAdicionais" type="number" class="form-input w-full"></div>
+            <div><label class="block text-sm">Lista Adicional</label><input name="periciasAdicionais" class="form-input w-full"></div>
+        </div>
+        <div><label class="block text-sm">Habilidades por Nível (Ex: 1: Ataque Furtivo)</label><textarea name="levelAbilities" class="form-input w-full h-20"></textarea></div>
+        <div><label class="block text-sm">Efeitos Técnicos</label><textarea name="effects" class="form-input w-full h-20"></textarea></div>
+        <div><label class="block text-sm">JSON de Escolhas</label><textarea name="choices" class="form-input w-full h-20 font-mono text-xs"></textarea></div>
+        <div><label class="block text-sm">Fonte</label><input name="source" class="form-input w-full" list="source-list"></div>
+    </form>`;
+}
+
+function getOriginFormHtml() {
+    return `
+    <form class="space-y-4">
+        <div><label class="block text-sm">Nome</label><input name="name" class="form-input w-full" required></div>
+        <div><label class="block text-sm">Itens</label><input name="items" class="form-input w-full"></div>
+        <div><label class="block text-sm">Poder Único</label><input name="power" class="form-input w-full"></div>
+        <div><label class="block text-sm">Num. Benefícios</label><input name="numBeneficios" type="number" class="form-input w-full"></div>
+        <div><label class="block text-sm">Benefícios: Perícias</label><input name="benefits_skills" class="form-input w-full"></div>
+        <div><label class="block text-sm">Benefícios: Poderes</label><input name="benefits_powers" class="form-input w-full"></div>
+        <div><label class="block text-sm">Fonte</label><input name="source" class="form-input w-full" list="source-list"></div>
+    </form>`;
+}
+
+function getDivinityFormHtml() {
+    return `
+    <form class="space-y-4">
+        <div><label class="block text-sm">Nome</label><input name="name" class="form-input w-full" required></div>
+        <div class="grid grid-cols-2 gap-4">
+            <div><label class="block text-sm">Canalizar</label><input name="canalizarEnergia" class="form-input w-full"></div>
+            <div><label class="block text-sm">Arma Preferida</label><input name="armaPreferida" class="form-input w-full"></div>
+        </div>
+        <div><label class="block text-sm">Poderes Concedidos (Sep. por vírgula)</label><textarea name="powers" class="form-input w-full h-20"></textarea></div>
+        <div><label class="block text-sm">Obrigações e Restrições</label><textarea name="obrigaçõesRestricoes" class="form-input w-full h-20"></textarea></div>
+        <div><label class="block text-sm">Fonte</label><input name="source" class="form-input w-full" list="source-list"></div>
+    </form>`;
+}
+
+function getPowerFormHtml() {
+    return `
+    <form class="space-y-4">
+        <div><label class="block text-sm">Nome</label><input name="name" class="form-input w-full" required></div>
+        <div class="grid grid-cols-2 gap-4">
+            <div><label class="block text-sm">Tipo (Combate, Destino...)</label><input name="type" class="form-input w-full"></div>
+            <div><label class="block text-sm">Pré-requisitos</label><input name="prerequisites" class="form-input w-full"></div>
+        </div>
+        <div><label class="block text-sm">Descrição</label><textarea name="description" class="form-input w-full h-20"></textarea></div>
+        <div><label class="block text-sm">Efeitos Técnicos (Ex: bonus_ataque: 1)</label><textarea name="effects" class="form-input w-full h-20"></textarea></div>
+        <div><label class="block text-sm">Fonte</label><input name="source" class="form-input w-full" list="source-list"></div>
+    </form>`;
+}
+
+function getItemFormHtml() {
+    return `
+    <form class="space-y-4">
+        <div><label class="block text-sm">Nome</label><input name="name" class="form-input w-full" required></div>
+        <div class="grid grid-cols-2 gap-4">
+            <div><label class="block text-sm">Tipo (Geral, Alquimia...)</label><input name="tipo" class="form-input w-full"></div>
+            <div><label class="block text-sm">Preço (T$)</label><input name="preco" class="form-input w-full"></div>
+            <div><label class="block text-sm">Espaço</label><input name="espaco" type="number" class="form-input w-full"></div>
+        </div>
+        <div><label class="block text-sm">Descrição</label><textarea name="description" class="form-input w-full h-20"></textarea></div>
+        <div><label class="block text-sm">Fonte</label><input name="source" class="form-input w-full" list="source-list"></div>
+    </form>`;
+}
+
+function getWeaponFormHtml() {
+    return `
+    <form class="space-y-4">
+        <div><label class="block text-sm">Nome</label><input name="name" class="form-input w-full" required></div>
+        <div class="grid grid-cols-2 gap-4">
+            <div><label class="block text-sm">Proficiência (Simples, Marcial...)</label><input name="proficiencia" class="form-input w-full"></div>
+            <div><label class="block text-sm">Dano</label><input name="dano" class="form-input w-full"></div>
+            <div><label class="block text-sm">Crítico</label><input name="critico" class="form-input w-full"></div>
+            <div><label class="block text-sm">Alcance</label><input name="alcance" class="form-input w-full"></div>
+            <div><label class="block text-sm">Tipo de Dano</label><input name="tipoDano" class="form-input w-full"></div>
+            <div><label class="block text-sm">Espaço</label><input name="espaco" type="number" class="form-input w-full"></div>
+        </div>
+        <div><label class="block text-sm">Descrição</label><textarea name="description" class="form-input w-full h-20"></textarea></div>
+        <div><label class="block text-sm">Fonte</label><input name="source" class="form-input w-full" list="source-list"></div>
+    </form>`;
+}
+
+function getArmorFormHtml() {
+    return `
+    <form class="space-y-4">
+        <div><label class="block text-sm">Nome</label><input name="name" class="form-input w-full" required></div>
+        <div class="grid grid-cols-2 gap-4">
+            <div><label class="block text-sm">Tipo (Leve, Pesada, Escudo)</label><input name="proficiencia" class="form-input w-full"></div>
+            <div><label class="block text-sm">Bônus na Defesa</label><input name="bonus" type="number" class="form-input w-full"></div>
+            <div><label class="block text-sm">Penalidade de Armadura</label><input name="penalidade" type="number" class="form-input w-full"></div>
+            <div><label class="block text-sm">Espaço</label><input name="espaco" type="number" class="form-input w-full"></div>
+        </div>
+        <div><label class="block text-sm">Descrição</label><textarea name="description" class="form-input w-full h-20"></textarea></div>
+        <div><label class="block text-sm">Fonte</label><input name="source" class="form-input w-full" list="source-list"></div>
+    </form>`;
+}
+
+function getSpellFormHtml() {
+    return `
+    <form class="space-y-4">
+        <div><label class="block text-sm">Nome</label><input name="name" class="form-input w-full" required></div>
+        <div class="grid grid-cols-3 gap-4">
+            <div><label class="block text-sm">Círculo</label><input name="circulo" type="number" class="form-input w-full"></div>
+            <div class="col-span-2"><label class="block text-sm">Escola</label><input name="escola" class="form-input w-full"></div>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+            <div><label class="block text-sm">Execução</label><input name="execucao" class="form-input w-full"></div>
+            <div><label class="block text-sm">Alcance</label><input name="alcance" class="form-input w-full"></div>
+            <div><label class="block text-sm">Alvo/Área</label><input name="alvoArea" class="form-input w-full"></div>
+            <div><label class="block text-sm">Duração</label><input name="duracao" class="form-input w-full"></div>
+        </div>
+        <div><label class="block text-sm">Resistência</label><input name="resistencia" class="form-input w-full"></div>
+        <div><label class="block text-sm">Descrição Curta</label><textarea name="descricaoCurta" class="form-input w-full h-10"></textarea></div>
+        <div><label class="block text-sm">Descrição Completa</label><textarea name="description" class="form-input w-full h-32"></textarea></div>
+        <div><label class="block text-sm">Fonte</label><input name="source" class="form-input w-full" list="source-list"></div>
+    </form>`;
+}
+
+window.populateEquipmentSelects = populateEquipmentSelects;
+
+
+const CONDITIONS = [
+    { id: 'abalado', name: 'Abalado', description: '-2 em testes de perícia.', effects: { bonus_pericia_all: -2 } },
+    { id: 'abracado', name: 'Abraçado', description: '-2 na Defesa.', effects: { bonus_armadura: -2 } }, // Simplification
+    { id: 'agarrado', name: 'Agarrado', description: '-2 em ataques, -2 na Defesa, Deslocamento 0.', effects: { bonus_ataque_corpoacorpo: -2, bonus_ataque_adistancia: -2, bonus_armadura: -2, deslocamento: -999 } },
+    { id: 'alquebrado', name: 'Alquebrado', description: 'Custo de PM +1.', effects: { custo_pm: 1 } }, // Need to implement PM cost logic? Or just display.
+    { id: 'atordoado', name: 'Atordoado', description: 'Incapaz de agir. -5 na Defesa.', effects: { bonus_armadura: -5 } },
+    { id: 'caido', name: 'Caído', description: '-5 em ataques corpo a corpo, -5 na Defesa contra corpo a corpo (+5 contra distancia).', effects: { bonus_ataque_corpoacorpo: -5, bonus_armadura: -5 } }, // Simplified
+    { id: 'cego', name: 'Cego', description: 'Desprevenido (-5 Defesa), -5 em perícias de Força/Destreza.', effects: { bonus_armadura: -5, bonus_pericia_FOR: -5, bonus_pericia_DES: -5 } }, // Custom logic needed for "Attribute Skills"
+    { id: 'confuso', name: 'Confuso', description: 'Comportamento aleatório.', effects: {} },
+    { id: 'debilitado', name: 'Debilitado', description: '-2 em testes de atributo e perícia (exceto ataque).', effects: { bonus_pericia_all_no_attack: -2, bonus_atributo_all: -2 } },
+    { id: 'desprevenido', name: 'Desprevenido', description: '-5 na Defesa e Reflexos.', effects: { bonus_armadura: -5, bonus_pericia_Reflexos: -5 } },
+    { id: 'doente', name: 'Doente', description: 'Varia.', effects: {} },
+    { id: 'enjoado', name: 'Enjoado', description: 'Apenas uma ação padrão ou movimento.', effects: {} },
+    { id: 'envenenado', name: 'Envenenado', description: 'Varia.', effects: {} },
+    { id: 'exausto', name: 'Exausto', description: '-2 em testes, metade do deslocamento.', effects: { bonus_pericia_all: -2, deslocamento_multiplier: 0.5 } },
+    { id: 'fascinado', name: 'Fascinado', description: '-5 em Percepção.', effects: { bonus_pericia_Percepção: -5 } },
+    { id: 'fraco', name: 'Fraco', description: '-2 em testes de atributo e perícia físicos.', effects: { bonus_pericia_FOR: -2, bonus_pericia_DES: -2, bonus_pericia_CON: -2 } },
+    { id: 'frustrado', name: 'Frustrado', description: '-2 em testes de atributo e perícia mentais.', effects: { bonus_pericia_INT: -2, bonus_pericia_SAB: -2, bonus_pericia_CAR: -2 } },
+    { id: 'imovel', name: 'Imóvel', description: 'Deslocamento 0. -5 Defesa.', effects: { deslocamento: -999, bonus_armadura: -5 } },
+    { id: 'inconsciente', name: 'Inconsciente', description: 'Indefeso.', effects: { bonus_armadura: -10 } }, // Rough approx
+    { id: 'indefeso', name: 'Indefeso', description: '-10 na Defesa (cai a 0 se <10?).', effects: { bonus_armadura: -10 } },
+    { id: 'lento', name: 'Lento', description: 'Metade do deslocamento, -2 Reflexos.', effects: { deslocamento_multiplier: 0.5, bonus_pericia_Reflexos: -2 } },
+    { id: 'ofuscado', name: 'Ofuscado', description: '-2 em ataques e Percepção.', effects: { bonus_ataque_corpoacorpo: -2, bonus_ataque_adistancia: -2, bonus_pericia_Percepção: -2 } },
+    { id: 'paralisado', name: 'Paralisado', description: 'Imóvel e Indefeso.', effects: { deslocamento: -999, bonus_armadura: -10 } },
+    { id: 'pasmo', name: 'Pasmo', description: 'Não pode agir.', effects: {} },
+    { id: 'petrificado', name: 'Petrificado', description: 'Inconsciente + RD 10/8.', effects: { bonus_armadura: -10, rd_total: 8 } },
+    { id: 'sangrando', name: 'Sangrando', description: 'Perde PV no início do turno.', effects: {} },
+    { id: 'surdo', name: 'Surdo', description: '-5 em Iniciativa, Percepção. Testes de Vontade para magias.', effects: { bonus_pericia_Iniciativa: -5, bonus_pericia_Percepção: -5 } },
+    { id: 'surpreendido', name: 'Surpreendido', description: 'Desprevenido (-5 Defesa).', effects: { bonus_armadura: -5 } },
+    { id: 'vulneravel', name: 'Vulnerável', description: '-2 na Defesa.', effects: { bonus_armadura: -2 } }
+];
+
+function renderConditionsSection(stats) {
+    const { char } = stats;
+    const active = char.activeConditions || [];
+
+    // Create UI container if missing (append to Ficha view)
+    let container = document.getElementById('conditions-section');
+    if (!container) {
+        const parent = document.getElementById('view-ficha');
+        const div = document.createElement('div');
+        div.id = 'conditions-section';
+        div.className = 'glass-effect p-6 mt-6';
+        div.innerHTML = `<h3 class="text-lg font-semibold text-red-400 mb-4">Condições & Efeitos</h3><div id="conditions-list" class="flex flex-wrap gap-2"></div>`;
+        // Insert before skills or somewhere appropriate. Let's append for now or insert before skills.
+        // The skills section is deep inside. Let's just append to view-ficha.
+        parent.insertBefore(div, parent.querySelector('#skills-header')?.closest('.glass-effect') || null);
+        container = div;
+    }
+
+    const list = document.getElementById('conditions-list');
+    list.innerHTML = CONDITIONS.map(cond => {
+        const isActive = active.includes(cond.id);
+        return `
+            <button onclick="toggleCondition('${cond.id}')"
+                class="px-3 py-1 rounded border text-sm transition-colors ${isActive ? 'bg-red-900 border-red-500 text-white' : 'bg-gray-800 border-gray-600 text-gray-400 hover:bg-gray-700'}"
+                title="${cond.description}">
+                ${cond.name}
+            </button>
+        `;
+    }).join('');
+
+    window.toggleCondition = (id) => {
+        const idx = state.currentCharacter.activeConditions.indexOf(id);
+        if (idx >= 0) state.currentCharacter.activeConditions.splice(idx, 1);
+        else state.currentCharacter.activeConditions.push(id);
+        orchestrateSheetUpdate();
+    };
+}
